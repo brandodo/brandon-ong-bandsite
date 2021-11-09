@@ -9,6 +9,10 @@
   height: 200px;
   position: relative;
 
+  @include global.tablet {
+    height: 500px;
+  }
+
   &__overlay {
     background-color: global.$primary-bg-color;
     opacity: 50%;
@@ -23,6 +27,11 @@
     position: absolute;
     padding: 0 16px;
     z-index: 1;
+
+    @include global.tablet {
+      font-size: 20rem;
+      padding-left: 36px;
+    }
   }
 }
 
@@ -31,9 +40,33 @@
   flex-direction: column;
   padding: 0 16px;
 
+  @include global.tablet {
+    padding: 0 36px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include global.tablet {
+      padding: 0 56px;
+    }
+  }
+
   &__title {
     @include global.headerText;
+
+    @include global.tablet {
+      font-size: 12rem;
+      padding-top: 48px;
+      padding-bottom: 36px;
+    }
   }
+
+  //   &__image {
+  //     @include tablet {
+  //     }
+  //   }
 
   &__quote,
   &__quote-name {
@@ -42,32 +75,92 @@
 
   &__quote {
     padding: 16px 0 8px 0;
+
+    @include global.tablet {
+      padding: 36px 0 12px 0;
+      font-size: 8rem;
+      line-height: 32px;
+    }
+  }
+
+  &__quote-name {
+    @include global.tablet {
+      font-size: 5rem;
+      padding-bottom: 36px;
+    }
+  }
+
+  &__band-name {
+    @include global.subheaderText;
+
+    @include global.tablet {
+      font-size: 8rem;
+      font-family: "Avenir-Demi";
+    }
+  }
+
+  &__bio-container {
+    @include global.tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 
   &__band-bio-text {
     @include global.bodyText;
     margin: 0;
     padding-bottom: 16px;
-  }
 
-  &__band-name {
-    @include global.subheaderText;
+    @include global.tablet {
+      font-size: 4.67rem;
+      line-height: 22px;
+      width: 47%;
+      padding-bottom: 36px;
+    }
   }
 }
 
 .photo-gallery {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   padding: 0 16px;
   background-color: global.$alt-bg-color;
 
+  @include global.tablet {
+      padding: 0 36px;
+  }
+
   &__title {
     @include global.headerText;
+
+    @include global.tablet {
+      font-size: 12rem;
+      padding-top: 48px;
+      padding-bottom: 36px; 
+    }
+  }
+
+  &__image-container {
+    display: flex;
+    flex-direction: column;
+
+    @include global.tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-bottom: 24px;
+    }
   }
 
   &__image {
     padding-bottom: 16px;
+
+    @include global.tablet {
+      width: 220px;
+      padding-bottom: 24px;
+      
+    }
   }
 }
 
