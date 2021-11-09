@@ -1,3 +1,190 @@
-.body {
+@font-face {
+  font-family: "Avenir-Regular";
+  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Avenir-Bold";
+  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Avenir-Demi";
+  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype");
+  font-weight: 600;
+}
+:root {
+  font-size: 3px;
+  font-family: "Avenir-Regular";
+}
+
+body {
   width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #323232;
+}
+.nav-bar__image-container {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+.nav-bar__image-logo {
+  max-height: 20px;
+  max-width: 120px;
+}
+.nav-bar__menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style: none;
+  width: 100%;
+  padding-left: 0;
+  margin: 0;
+}
+.nav-bar__menu-option {
+  text-align: center;
+  font-size: 4.67rem;
+  width: 100%;
+  padding-bottom: 16px;
+}
+.nav-bar__menu-link {
+  width: 100%;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  background-image: url("../assets/images/hero-bio.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  position: relative;
+}
+.hero-section__overlay {
+  background-color: #323232;
+  opacity: 50%;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.hero-section__title {
+  font-size: 8rem;
+  font-family: "Avenir-Demi";
+  line-height: 32px;
+  margin: 0;
+  padding-top: 24px;
+  padding-bottom: 16px;
+  color: #ffffff;
+  position: absolute;
+  padding: 0 16px;
+  z-index: 1;
+}
+
+.bio-section {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+}
+.bio-section__title {
+  font-size: 8rem;
+  font-family: "Avenir-Demi";
+  line-height: 32px;
+  margin: 0;
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+.bio-section__quote, .bio-section__quote-name {
+  font-size: 4.67rem;
+  font-family: "Avenir-Demi";
+  line-height: 22px;
+  margin: 0;
+}
+.bio-section__quote {
+  padding: 16px 0 8px 0;
+}
+.bio-section__band-bio-text {
+  font-size: 4.33rem;
+  font-family: "Avenir-Regular";
+  line-height: 18px;
+  margin: 0;
+  padding-bottom: 16px;
+}
+.bio-section__band-name {
+  font-size: 4.67rem;
+  font-family: "Avenir-Regular";
+  line-height: 22px;
+  margin: 0;
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+
+.photo-gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 16px;
+  background-color: #fafafa;
+}
+.photo-gallery__title {
+  font-size: 8rem;
+  font-family: "Avenir-Demi";
+  line-height: 32px;
+  margin: 0;
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+.photo-gallery__image {
+  padding-bottom: 16px;
+}
+
+.foot-bar {
+  display: flex;
+  flex-direction: column;
+  background-color: #323232;
+  color: #ffffff;
+  padding: 0 16px;
+}
+.foot-bar__title {
+  font-size: 8rem;
+  font-family: "Avenir-Demi";
+  line-height: 32px;
+  margin: 0;
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+.foot-bar__social {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 16px;
+}
+.foot-bar__social :nth-of-type(2) {
+  margin: 0 32px;
+}
+.foot-bar__contact-container {
+  font-size: 4.33rem;
+  font-family: "Avenir-Regular";
+  line-height: 18px;
+  padding-bottom: 24px;
+}
+.foot-bar__contact-name, .foot-bar__contact-company {
+  font-family: "Avenir-Demi";
+  margin: 0;
+}
+.foot-bar__copyright-container {
+  padding-top: 24px;
+  font-size: 4rem;
+}
+.foot-bar__copyright-text {
+  margin: 0;
+  padding: 16px 0;
 }/*# sourceMappingURL=bio.css.map */

@@ -1,10 +1,115 @@
-@mixin tablet {
-    @media (min-width: 768px) {
-        @content
+@use "./partials/global";
 
-    }
+.hero-section {
+  display: flex;
+  align-items: center;
+  background-image: url("../assets/images/hero-bio.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  position: relative;
+
+  &__overlay {
+    background-color: global.$primary-bg-color;
+    opacity: 50%;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+
+  &__title {
+    @include global.headerText;
+    color: global.$primary-text-color;
+    position: absolute;
+    padding: 0 16px;
+    z-index: 1;
+  }
 }
 
-.body {
-    width: 100%;
+.bio-section {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+
+  &__title {
+    @include global.headerText;
+  }
+
+  &__quote,
+  &__quote-name {
+    @include global.quoteText;
+  }
+
+  &__quote {
+    padding: 16px 0 8px 0;
+  }
+
+  &__band-bio-text {
+    @include global.bodyText;
+    margin: 0;
+    padding-bottom: 16px;
+  }
+
+  &__band-name {
+    @include global.subheaderText;
+  }
+}
+
+.photo-gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 16px;
+  background-color: global.$alt-bg-color;
+
+  &__title {
+    @include global.headerText;
+  }
+
+  &__image {
+    padding-bottom: 16px;
+  }
+}
+
+.foot-bar {
+  display: flex;
+  flex-direction: column;
+  background-color: global.$primary-bg-color;
+  color: global.$primary-text-color;
+  padding: 0 16px;
+
+  &__title {
+    @include global.headerText;
+  }
+
+  &__social {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 16px;
+
+    & :nth-of-type(2) {
+      margin: 0 32px;
+    }
+  }
+
+  &__contact-container {
+    @include global.footerText;
+    padding-bottom: 24px;
+  }
+
+  &__contact-name,
+  &__contact-company {
+    font-family: "Avenir-Demi";
+    margin: 0;
+  }
+
+  &__copyright-container {
+    padding-top: 24px;
+    font-size: 4rem;
+  }
+
+  &__copyright-text {
+    margin: 0;
+    padding: 16px 0;
+  }
 }
