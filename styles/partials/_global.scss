@@ -27,22 +27,22 @@ $alt-bg-color: #fafafa;
   font-weight: 600;
 }
 
-@mixin headerText {
-  font-size: 8rem;
-  font-family: "Avenir-Demi";
-  line-height: 32px;
+@mixin headerText($fontSize, $fontFam, $lineHeight, $padTop, $padBot) {
+  font-size: $fontSize;
+  font-family: $fontFam;
+  line-height: $lineHeight;
+  padding-top: $padTop;
+  padding-bottom: $padBot;
   margin: 0;
-  padding-top: 24px;
-  padding-bottom: 16px;
 }
 
-@mixin subheaderText {
-  font-size: 4.67rem;
-  font-family: "Avenir-Regular";
-  line-height: 22px;
+@mixin subheaderText($fontSize, $fontFam, $lineHeight, $padTop, $padBot) {
+  font-size: $fontSize;
+  font-family: $fontFam;
+  line-height: $lineHeight;
+  padding-top: $padTop;
+  padding-bottom: $padBot;
   margin: 0;
-  padding-top: 24px;
-  padding-bottom: 16px;
 }
 
 @mixin quoteText {

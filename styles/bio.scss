@@ -22,14 +22,14 @@
   }
 
   &__title {
-    @include global.headerText;
+    @include global.headerText(8rem, "Avenir-Demi", 32px, 0, 0);
     color: global.$primary-text-color;
     position: absolute;
-    padding: 0 16px;
+    padding-left: 16px;
     z-index: 1;
 
     @include global.tablet {
-      font-size: 20rem;
+      @include global.headerText(20rem, "Avenir-Demi", 68px, 0, 0);
       padding-left: 36px;
     }
   }
@@ -54,19 +54,11 @@
   }
 
   &__title {
-    @include global.headerText;
-
+    @include global.headerText(8rem, "Avenir-Demi", 32px, 24px, 16px);
     @include global.tablet {
-      font-size: 12rem;
-      padding-top: 48px;
-      padding-bottom: 36px;
+      @include global.headerText(12rem, "Avenir-Demi", 44px, 48px, 36px);
     }
   }
-
-  //   &__image {
-  //     @include tablet {
-  //     }
-  //   }
 
   &__quote,
   &__quote-name {
@@ -91,7 +83,7 @@
   }
 
   &__band-name {
-    @include global.subheaderText;
+    @include global.subheaderText(4.67rem, "Avenir-Regular", 22px, 24px, 16px);
 
     @include global.tablet {
       font-size: 8rem;
@@ -128,16 +120,13 @@
   background-color: global.$alt-bg-color;
 
   @include global.tablet {
-      padding: 0 36px;
+    padding: 0 36px;
   }
 
   &__title {
-    @include global.headerText;
-
+    @include global.headerText(8rem, "Avenir-Demi", 32px, 24px, 16px);
     @include global.tablet {
-      font-size: 12rem;
-      padding-top: 48px;
-      padding-bottom: 36px; 
+      @include global.headerText(12rem, "Avenir-Demi", 44px, 48px, 36px);
     }
   }
 
@@ -159,7 +148,6 @@
     @include global.tablet {
       width: 220px;
       padding-bottom: 24px;
-      
     }
   }
 }
@@ -172,7 +160,7 @@
   padding: 0 16px;
 
   &__title {
-    @include global.headerText;
+    @include global.headerText(8rem, "Avenir-Demi", 32px, 24px, 16px);
   }
 
   &__social {
