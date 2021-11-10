@@ -1,81 +1,6 @@
-$primary-bg-color: #323232;
-$primary-text-color: #ffffff;
-$secondary-text-color: #afafaf;
-$hover-state-bg-color: #000000;
-$form-item-color: #e1e1e1;
-$alt-bg-color: #fafafa;
-
-@font-face {
-  font-family: "Avenir-Regular";
-  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Regular.otf")
-    format("opentype");
-  font-style: normal;
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Avenir-Bold";
-  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Bold.otf")
-    format("opentype");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Avenir-Demi";
-  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Demi.otf")
-    format("opentype");
-  font-weight: 600;
-}
-
-@mixin headerText($fontSize, $fontFam, $lineHeight, $padTop, $padBot) {
-  font-size: $fontSize;
-  font-family: $fontFam;
-  line-height: $lineHeight;
-  padding-top: $padTop;
-  padding-bottom: $padBot;
-  margin: 0;
-}
-
-@mixin subheaderText($fontSize, $fontFam, $lineHeight, $padTop, $padBot) {
-  font-size: $fontSize;
-  font-family: $fontFam;
-  line-height: $lineHeight;
-  padding-top: $padTop;
-  padding-bottom: $padBot;
-  margin: 0;
-}
-
-@mixin quoteText {
-  font-size: 4.67rem;
-  font-family: "Avenir-Demi";
-  line-height: 22px;
-  margin: 0;
-}
-
-@mixin bodyText {
-  font-size: 4.33rem;
-  font-family: "Avenir-Regular";
-  line-height: 18px;
-  //   letter-spacing: 1px;
-}
-
-@mixin footerText {
-  font-size: 4.33rem;
-  font-family: "Avenir-Regular";
-  line-height: 18px;
-}
-
-@mixin tablet {
-  @media (min-width: 767px) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: 1280px) {
-    @content;
-  }
-}
+@use "./variables";
+@use "./fonts";
+@use "./mixins";
 
 :root {
   font-size: 3px;
@@ -92,9 +17,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $primary-bg-color;
+  background-color: variables.$primary-bg-color;
 
-  @include tablet {
+  @include mixins.tablet {
     display: flex;
     flex-direction: row;
     padding: 0 36px;
@@ -106,7 +31,7 @@ body {
       justify-content: center;
       padding: 16px;
 
-      @include tablet {
+      @include mixins.tablet {
         padding: 24px 0;
         margin-right: 24px;
       }
@@ -128,7 +53,7 @@ body {
     padding-left: 0;
     margin: 0;
 
-    @include tablet {
+    @include mixins.tablet {
       display: flex;
       justify-content: flex-start;
     }
@@ -138,7 +63,7 @@ body {
       font-size: 4.67rem;
       width: 100%;
       padding-bottom: 16px;
-      @include tablet {
+      @include mixins.tablet {
         padding: 24px 0;
         margin: 0 24px;
         max-width: fit-content;
@@ -148,9 +73,9 @@ body {
     &-link {
       width: 100%;
       text-decoration: none;
-      color: $primary-text-color;
+      color: variables.$primary-text-color;
 
-      @include tablet {
+      @include mixins.tablet {
         max-width: fit-content;
       }
     }

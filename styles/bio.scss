@@ -1,4 +1,7 @@
 @use "./partials/global";
+@use "./partials/variables";
+@use "./partials/mixins";
+@use "./partials/fonts";
 
 .hero-section {
   display: flex;
@@ -9,12 +12,12 @@
   height: 200px;
   position: relative;
 
-  @include global.tablet {
+  @include mixins.tablet {
     height: 500px;
   }
 
   &__overlay {
-    background-color: global.$primary-bg-color;
+    background-color: variables.$primary-bg-color;
     opacity: 50%;
     height: 100%;
     width: 100%;
@@ -22,14 +25,14 @@
   }
 
   &__title {
-    @include global.headerText(8rem, "Avenir-Demi", 32px, 0, 0);
-    color: global.$primary-text-color;
+    @include mixins.headerText(variables.$default-header-size, variables.$default-header-font, variables.$default-header-lh, 0, 0);
+    color: variables.$primary-text-color;
     position: absolute;
     padding-left: 16px;
     z-index: 1;
 
-    @include global.tablet {
-      @include global.headerText(20rem, "Avenir-Demi", 68px, 0, 0);
+    @include mixins.tablet {
+      @include mixins.headerText(variables.$tablet-title-size, variables.$default-header-font, variables.$tablet-title-lh, 0, 0);
       padding-left: 36px;
     }
   }
@@ -40,7 +43,7 @@
   flex-direction: column;
   padding: 0 16px;
 
-  @include global.tablet {
+  @include mixins.tablet {
     padding: 0 36px;
   }
 
@@ -48,27 +51,27 @@
     display: flex;
     flex-direction: column;
 
-    @include global.tablet {
+    @include mixins.tablet {
       padding: 0 56px;
     }
   }
 
   &__title {
-    @include global.headerText(8rem, "Avenir-Demi", 32px, 24px, 16px);
-    @include global.tablet {
-      @include global.headerText(12rem, "Avenir-Demi", 44px, 48px, 36px);
+    @include mixins.headerText(variables.$default-header-size, variables.$default-header-font, variables.$default-header-lh, variables.$default-padding-top, variables.$default-padding-bot);
+    @include mixins.tablet {
+      @include mixins.headerText(variables.$tablet-header-size, variables.$default-header-font, variables.$tablet-header-lh, variables.$tablet-padding-top, variables.$tablet-padding-bot);
     }
   }
 
   &__quote,
   &__quote-name {
-    @include global.quoteText;
+    @include mixins.quoteText(variables.$quote-size, variables.$default-header-font, variables.$quote-lh);
   }
 
   &__quote {
     padding: 16px 0 8px 0;
 
-    @include global.tablet {
+    @include mixins.tablet {
       padding: 36px 0 12px 0;
       font-size: 8rem;
       line-height: 32px;
@@ -76,23 +79,23 @@
   }
 
   &__quote-name {
-    @include global.tablet {
+    @include mixins.tablet {
       font-size: 5rem;
       padding-bottom: 36px;
     }
   }
 
   &__band-name {
-    @include global.subheaderText(4.67rem, "Avenir-Regular", 22px, 24px, 16px);
+    @include mixins.subheaderText(4.67rem, "Avenir-Regular", 22px, 24px, 16px);
 
-    @include global.tablet {
+    @include mixins.tablet {
       font-size: 8rem;
       font-family: "Avenir-Demi";
     }
   }
 
   &__bio-container {
-    @include global.tablet {
+    @include mixins.tablet {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -100,11 +103,11 @@
   }
 
   &__band-bio-text {
-    @include global.bodyText;
+    @include mixins.bodyText;
     margin: 0;
     padding-bottom: 16px;
 
-    @include global.tablet {
+    @include mixins.tablet {
       font-size: 4.67rem;
       line-height: 22px;
       width: 47%;
@@ -117,16 +120,16 @@
   display: flex;
   flex-direction: column;
   padding: 0 16px;
-  background-color: global.$alt-bg-color;
+  background-color: variables.$alt-bg-color;
 
-  @include global.tablet {
+  @include mixins.tablet {
     padding: 0 36px;
   }
 
   &__title {
-    @include global.headerText(8rem, "Avenir-Demi", 32px, 24px, 16px);
-    @include global.tablet {
-      @include global.headerText(12rem, "Avenir-Demi", 44px, 48px, 36px);
+    @include mixins.headerText(variables.$default-header-size, variables.$default-header-font, variables.$default-header-lh, variables.$default-padding-top, variables.$default-padding-bot);
+    @include mixins.tablet {
+      @include mixins.headerText(variables.$tablet-header-size, variables.$default-header-font, variables.$tablet-header-lh, variables.$tablet-padding-top, variables.$tablet-padding-bot);
     }
   }
 
@@ -134,7 +137,7 @@
     display: flex;
     flex-direction: column;
 
-    @include global.tablet {
+    @include mixins.tablet {
       flex-direction: row;
       justify-content: space-between;
       flex-wrap: wrap;
@@ -145,7 +148,7 @@
   &__image {
     padding-bottom: 16px;
 
-    @include global.tablet {
+    @include mixins.tablet {
       width: 220px;
       padding-bottom: 24px;
     }
@@ -155,12 +158,12 @@
 .foot-bar {
   display: flex;
   flex-direction: column;
-  background-color: global.$primary-bg-color;
-  color: global.$primary-text-color;
+  background-color: variables.$primary-bg-color;
+  color: variables.$primary-text-color;
   padding: 0 16px;
 
   &__title {
-    @include global.headerText(8rem, "Avenir-Demi", 32px, 24px, 16px);
+    @include mixins.headerText(variables.$default-header-size, variables.$default-header-font, variables.$default-header-lh, variables.$default-padding-top, variables.$default-padding-bot);
   }
 
   &__social {
@@ -174,7 +177,7 @@
   }
 
   &__contact-container {
-    @include global.footerText;
+    @include mixins.footerText;
     padding-bottom: 24px;
   }
 

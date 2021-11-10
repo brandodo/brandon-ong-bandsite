@@ -1,0 +1,49 @@
+@mixin headerText($fontSize, $fontFam, $lineHeight, $padTop, $padBot) {
+    font-size: $fontSize;
+    font-family: $fontFam;
+    line-height: $lineHeight;
+    padding-top: $padTop;
+    padding-bottom: $padBot;
+    margin: 0;
+  }
+  
+  @mixin subheaderText($fontSize, $fontFam, $lineHeight, $padTop, $padBot) {
+    font-size: $fontSize;
+    font-family: $fontFam;
+    line-height: $lineHeight;
+    padding-top: $padTop;
+    padding-bottom: $padBot;
+    margin: 0;
+  }
+  
+  @mixin quoteText ($fontSize, $fontFam, $lineHeight) {
+    font-size: $fontSize;
+    font-family: $fontFam;
+    line-height: $lineHeight;
+    margin: 0;
+  }
+  
+  @mixin bodyText {
+    font-size: 4.33rem;
+    font-family: "Avenir-Regular";
+    line-height: 18px;
+    //   letter-spacing: 1px;
+  }
+  
+  @mixin footerText {
+    font-size: 4.33rem;
+    font-family: "Avenir-Regular";
+    line-height: 18px;
+  }
+  
+  @mixin tablet {
+    @media (min-width: 767px) {
+      @content;
+    }
+  }
+  
+  @mixin desktop {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  }
