@@ -25,15 +25,27 @@
   }
 
   &__title {
-    @include mixins.headerText(variables.$default-header-size, variables.$default-header-font, variables.$default-header-lh, 0, 0);
+    @include mixins.textFormat(
+      variables.$default-header-size,
+      variables.$font-demi,
+      variables.$default-header-lh,
+      0,
+      0
+    );
     color: variables.$primary-text-color;
     position: absolute;
-    padding-left: 16px;
+    padding-left: variables.$padding-two;
     z-index: 1;
 
     @include mixins.tablet {
-      @include mixins.headerText(variables.$tablet-title-size, variables.$default-header-font, variables.$tablet-title-lh, 0, 0);
-      padding-left: 36px;
+      @include mixins.textFormat(
+        variables.$tablet-title-size,
+        variables.$font-demi,
+        variables.$tablet-title-lh,
+        0,
+        0
+      );
+      padding-left: variables.$padding-four;
     }
   }
 }
@@ -41,10 +53,10 @@
 .bio-section {
   display: flex;
   flex-direction: column;
-  padding: 0 16px;
+  padding: 0 variables.$padding-two;
 
   @include mixins.tablet {
-    padding: 0 36px;
+    padding: 0 variables.$padding-four;
   }
 
   &__wrapper {
@@ -52,45 +64,90 @@
     flex-direction: column;
 
     @include mixins.tablet {
-      padding: 0 56px;
+      padding: 0 variables.$padding-seven;
     }
   }
 
   &__title {
-    @include mixins.headerText(variables.$default-header-size, variables.$default-header-font, variables.$default-header-lh, variables.$default-padding-top, variables.$default-padding-bot);
+    @include mixins.textFormat(
+      variables.$default-header-size,
+      variables.$font-demi,
+      variables.$default-header-lh,
+      variables.$padding-three,
+      variables.$padding-two
+    );
     @include mixins.tablet {
-      @include mixins.headerText(variables.$tablet-header-size, variables.$default-header-font, variables.$tablet-header-lh, variables.$tablet-padding-top, variables.$tablet-padding-bot);
+      @include mixins.textFormat(
+        variables.$tablet-header-size,
+        variables.$font-demi,
+        variables.$tablet-header-lh,
+        variables.$padding-six,
+        variables.$tablet-padding-bot
+      );
     }
   }
 
-  &__quote,
-  &__quote-name {
-    @include mixins.quoteText(variables.$quote-size, variables.$default-header-font, variables.$quote-lh);
-  }
+  // &__quote,
+  // &__quote-name {
+  //   @include mixins.quoteText(variables.$pg-font-size, variables.$font-demi, variables.$pg-lh);
+  // }
 
   &__quote {
-    padding: 16px 0 8px 0;
+    @include mixins.textFormat(
+      variables.$default-sub-header-size,
+      variables.$font-demi,
+      variables.$default-sub-header-lh,
+      variables.$padding-two,
+      variables.$padding-increment
+    );
 
     @include mixins.tablet {
-      padding: 36px 0 12px 0;
-      font-size: 8rem;
-      line-height: 32px;
+      @include mixins.textFormat(
+        variables.$tablet-sub-header-size,
+        variables.$font-demi,
+        variables.$tablet-sub-header-lh,
+        36px,
+        12px
+      );
     }
   }
 
   &__quote-name {
+    @include mixins.textFormat(
+      variables.$default-text-size,
+      variables.$font-demi,
+      variables.$default-text-lh,
+      0,
+      0
+    );
     @include mixins.tablet {
-      font-size: 5rem;
-      padding-bottom: 36px;
+      @include mixins.textFormat(
+        6rem,
+        variables.$font-demi,
+        variables.$tablet-body-lh,
+        0,
+        variables.$tablet-padding-bot
+      );
     }
   }
 
   &__band-name {
-    @include mixins.subheaderText(4.67rem, "Avenir-Regular", 22px, 24px, 16px);
+    @include mixins.textFormat(
+      variables.$default-sub-header-size,
+      variables.$font-regular,
+      variables.$default-sub-header-lh,
+      variables.$default-padding-top,
+      variables.$default-padding-bot
+    );
 
     @include mixins.tablet {
-      font-size: 8rem;
-      font-family: "Avenir-Demi";
+      @include mixins.textFormat(
+        variables.$tablet-sub-header-size,
+        variables.$font-demi,
+        variables.$tablet-sub-header-lh,
+        variables.$default-padding-top,
+        variables.$default-padding-bot
+      );
     }
   }
 
@@ -103,15 +160,23 @@
   }
 
   &__band-bio-text {
-    @include mixins.bodyText;
-    margin: 0;
-    padding-bottom: 16px;
+    @include mixins.textFormat(
+      variables.$default-text-size,
+      variables.$font-regular,
+      variables.$default-text-lh,
+      0,
+      variables.$default-padding-bot
+    );
 
     @include mixins.tablet {
-      font-size: 4.67rem;
-      line-height: 22px;
+      @include mixins.textFormat(
+        variables.$tablet-text-size,
+        variables.$font-regular,
+        variables.$tablet-body-lh,
+        0,
+        variables.$tablet-padding-bot
+      );
       width: 47%;
-      padding-bottom: 36px;
     }
   }
 }
@@ -119,17 +184,29 @@
 .photo-gallery {
   display: flex;
   flex-direction: column;
-  padding: 0 16px;
+  padding: 0 variables.$padding-two;
   background-color: variables.$alt-bg-color;
 
   @include mixins.tablet {
-    padding: 0 36px;
+    padding: 0 variables.$padding-four;
   }
 
   &__title {
-    @include mixins.headerText(variables.$default-header-size, variables.$default-header-font, variables.$default-header-lh, variables.$default-padding-top, variables.$default-padding-bot);
+    @include mixins.textFormat(
+      variables.$default-header-size,
+      variables.$font-demi,
+      variables.$default-header-lh,
+      variables.$default-padding-top,
+      variables.$default-padding-bot
+    );
     @include mixins.tablet {
-      @include mixins.headerText(variables.$tablet-header-size, variables.$default-header-font, variables.$tablet-header-lh, variables.$tablet-padding-top, variables.$tablet-padding-bot);
+      @include mixins.textFormat(
+        variables.$tablet-header-size,
+        variables.$font-demi,
+        variables.$tablet-header-lh,
+        variables.$tablet-padding-top,
+        variables.$tablet-padding-bot
+      );
     }
   }
 
@@ -141,16 +218,16 @@
       flex-direction: row;
       justify-content: space-between;
       flex-wrap: wrap;
-      padding-bottom: 24px;
+      padding-bottom: variables.$padding-three;
     }
   }
 
   &__image {
-    padding-bottom: 16px;
+    padding-bottom: variables.$padding-two;
 
     @include mixins.tablet {
-      width: 220px;
-      padding-bottom: 24px;
+      width: 32%;
+      padding-bottom: variables.$padding-two;
     }
   }
 }
@@ -160,40 +237,127 @@
   flex-direction: column;
   background-color: variables.$primary-bg-color;
   color: variables.$primary-text-color;
-  padding: 0 16px;
+  padding: 0 variables.$padding-two;
+
+  @include mixins.tablet {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 variables.$padding-four;
+    position: relative;
+  }
 
   &__title {
-    @include mixins.headerText(variables.$default-header-size, variables.$default-header-font, variables.$default-header-lh, variables.$default-padding-top, variables.$default-padding-bot);
+    @include mixins.textFormat(
+      variables.$default-header-size,
+      variables.$font-demi,
+      variables.$default-header-lh,
+      variables.$default-padding-top,
+      variables.$default-padding-bot
+    );
+    @include mixins.tablet {
+      @include mixins.textFormat(
+        variables.$tablet-header-size,
+        variables.$font-demi,
+        variables.$tablet-header-lh,
+        variables.$tablet-padding-top,
+        variables.$tablet-padding-bot
+      );
+    }
   }
 
   &__social {
     display: flex;
     justify-content: flex-start;
-    padding-bottom: 16px;
+    padding-bottom: variables.$padding-three;
 
     & :nth-of-type(2) {
-      margin: 0 32px;
+      margin: 0 variables.$padding-four;
+    }
+
+    @include mixins.tablet {
+      height: fit-content;
+      padding: 0;
+      padding-top: variables.$padding-increment;
+      padding-left: variables.$padding-four;
+      align-items: flex-end;
+
+      &-icon {
+        width: 25px;
+
+        &--mid {
+          width: 15px;
+        }
+
+        &--last {
+          width: 30px;
+        }
+      }
+
     }
   }
 
   &__contact-container {
-    @include mixins.footerText;
-    padding-bottom: 24px;
+    @include mixins.textFormat(
+      variables.$default-text-size,
+      variables.$font-regular,
+      variables.$default-text-lh,
+      0,
+      variables.$padding-three
+    );
+
+    @include mixins.tablet {
+      display: flex;
+      @include mixins.textFormat(
+        variables.$tablet-text-size,
+        variables.$font-regular,
+        variables.$tablet-foot-lh,
+        0,
+        variables.$tablet-padding-bot
+      );
+
+      & div:nth-child(2) {
+        padding: 0 variables.$padding-six;
+      }
+
+
+    }
   }
 
-  &__contact-name,
-  &__contact-company {
-    font-family: "Avenir-Demi";
-    margin: 0;
+  &__contact-name-company {
+    font-family: variables.$font-demi;
+    padding-bottom: variables.$padding-two;
   }
 
-  &__copyright-container {
-    padding-top: 24px;
-    font-size: 4rem;
+  &__contact-address {
+    padding-bottom: variables.$padding-two;
+  }
+
+  &__contact-email {
+    padding-bottom: variables.$padding-three;
+  }
+
+  &__copyright-logo {
+    padding-top: variables.$padding-three;
+
+    @include mixins.tablet{
+      position: absolute;
+      top: 40px;
+      right: 32px;
+    }
   }
 
   &__copyright-text {
-    margin: 0;
-    padding: 16px 0;
+    font-size: 3.6rem;
+    padding: variables.$padding-two 0;
+
+    @include mixins.textFormat(
+        variables.$tablet-text-size,
+        variables.$font-regular,
+        variables.$tablet-foot-lh,
+        0,
+        variables.$tablet-padding-bot
+      );
   }
 }

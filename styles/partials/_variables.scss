@@ -7,23 +7,40 @@ $form-item-color: #e1e1e1;
 $alt-bg-color: #fafafa;
 
 // --Font variables--
+$font-regular: "Avenir-Regular";
+$font-demi: "Avenir-Demi";
+$font-bold: "Avenir-Bold";
 
-// mobile-default
+// --Padding variables--
+$padding-increment: 8px;
+$padding-half: $padding-increment/2;
+$padding-two: $padding-increment*2;
+$padding-three: $padding-increment*3;
+$padding-four: $padding-increment*4;
+$padding-five: $padding-increment*5;
+$padding-six: $padding-increment*6;
+$padding-seven: $padding-increment*7;
+$padding-eight: $padding-increment*8;
+
+// --Mobile Variables--
 $default-header-size: 8rem;
-$default-header-font: "Avenir-Demi";
 $default-header-lh: 32px;
+$default-sub-header-size: 4.67rem;
+$default-sub-header-lh: 22px;
+$default-text-size: 4.33rem;
+$default-text-lh: 18px;
 $default-padding-top: 24px;
 $default-padding-bot: 16px;
 
-$quote-size: 4.67rem;
-$quote-lh: 22px;
-
-// tablet
+// --Tablet & Desktop Variables--
 $tablet-title-size: 20rem;
 $tablet-title-lh: 68px;
 $tablet-header-size: 12rem;
 $tablet-header-lh: 44px;
+$tablet-sub-header-size: 8rem;
+$tablet-sub-header-lh: 32px;
+$tablet-text-size: 4.67rem;
+$tablet-body-lh: 22px;
+$tablet-foot-lh: 20px;
 $tablet-padding-top: 48px;
 $tablet-padding-bot: 36px;
-
-//desktop
