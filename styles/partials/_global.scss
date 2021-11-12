@@ -28,6 +28,13 @@ body {
     padding: 0 variables.$padding-four;
   }
 
+  @include mixins.desktop {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    padding: 0 variables.$padding-ten+variables.$padding-four;
+  }
+
   &__image {
     &-container {
       display: flex;

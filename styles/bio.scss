@@ -16,12 +16,22 @@
     height: 500px;
   }
 
+  @include mixins.desktop {
+    z-index: -1;
+    height: 675px;
+    padding-top: variables.$padding-eight;
+    background-position: top;
+  }
+
   &__overlay {
     background-color: variables.$primary-bg-color;
     opacity: 50%;
     height: 100%;
     width: 100%;
     position: relative;
+    @include mixins.desktop {
+      z-index: -1;
+    }
   }
 
   &__title {
@@ -47,6 +57,11 @@
       );
       padding-left: variables.$padding-four;
     }
+
+    @include mixins.desktop {
+      z-index: 0;
+      padding-left: variables.$padding-ten + variables.$padding-four;
+    }
   }
 }
 
@@ -57,6 +72,10 @@
 
   @include mixins.tablet {
     padding: 0 variables.$padding-four;
+  }
+
+  @include mixins.desktop {
+    padding: 0 variables.$padding-ten + variables.$padding-four;
   }
 
   &__wrapper {
@@ -87,9 +106,16 @@
     }
   }
 
-  // &__quote,
-  // &__quote-name {
-  //   @include mixins.quoteText(variables.$pg-font-size, variables.$font-demi, variables.$pg-lh);
+  // &__image-container {
+  //   background-image: url('../assets/images/band.jpg');
+  //   background-position: center center;
+  //   background-size: cover;
+  //   width: 100%;
+  //   height: calc(100% - 500px);
+
+  //   @include mixins.tablet {
+  //     height: 350px;
+  //   }
   // }
 
   &__quote {
@@ -191,6 +217,10 @@
     padding: 0 variables.$padding-four;
   }
 
+  @include mixins.desktop {
+    padding: 0 variables.$padding-ten + variables.$padding-four;
+  }
+
   &__title {
     @include mixins.textFormat(
       variables.$default-header-size,
@@ -248,6 +278,10 @@
     position: relative;
   }
 
+  @include mixins.desktop {
+    padding: 0 variables.$padding-ten + variables.$padding-four;
+  }
+
   &__title {
     @include mixins.textFormat(
       variables.$default-header-size,
@@ -294,7 +328,10 @@
           width: 30px;
         }
       }
+    }
 
+    @include mixins.desktop {
+      padding-left: variables.$padding-seven;
     }
   }
 
@@ -309,6 +346,7 @@
 
     @include mixins.tablet {
       display: flex;
+      width: 100%;
       @include mixins.textFormat(
         variables.$tablet-text-size,
         variables.$font-regular,
@@ -320,8 +358,12 @@
       & div:nth-child(2) {
         padding: 0 variables.$padding-six;
       }
+    }
 
-
+    @include mixins.desktop {
+      & div:nth-child(2) {
+        padding: 0 variables.$padding-nine;
+      }
     }
   }
 
@@ -341,10 +383,14 @@
   &__copyright-logo {
     padding-top: variables.$padding-three;
 
-    @include mixins.tablet{
+    @include mixins.tablet {
       position: absolute;
       top: 40px;
       right: 32px;
+    }
+
+    @include mixins.desktop {
+      right: 112px;
     }
   }
 
@@ -352,12 +398,14 @@
     font-size: 3.6rem;
     padding: variables.$padding-two 0;
 
-    @include mixins.textFormat(
+    @include mixins.tablet {
+      @include mixins.textFormat(
         variables.$tablet-text-size,
         variables.$font-regular,
         variables.$tablet-foot-lh,
         0,
         variables.$tablet-padding-bot
       );
+    }
   }
 }

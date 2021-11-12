@@ -41,6 +41,14 @@ body {
     padding: 0 32px;
   }
 }
+@media (min-width: 1280px) {
+  .nav-bar {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    padding: 0 112px;
+  }
+}
 .nav-bar__image-container {
   display: flex;
   justify-content: center;
@@ -113,12 +121,25 @@ body {
     height: 500px;
   }
 }
+@media (min-width: 1280px) {
+  .hero-section {
+    z-index: -1;
+    height: 675px;
+    padding-top: 64px;
+    background-position: top;
+  }
+}
 .hero-section__overlay {
   background-color: #323232;
   opacity: 50%;
   height: 100%;
   width: 100%;
   position: relative;
+}
+@media (min-width: 1280px) {
+  .hero-section__overlay {
+    z-index: -1;
+  }
 }
 .hero-section__title {
   font-size: 8rem;
@@ -141,6 +162,12 @@ body {
     padding-left: 32px;
   }
 }
+@media (min-width: 1280px) {
+  .hero-section__title {
+    z-index: 0;
+    padding-left: 112px;
+  }
+}
 
 .bio-section {
   display: flex;
@@ -150,6 +177,11 @@ body {
 @media (min-width: 767px) {
   .bio-section {
     padding: 0 32px;
+  }
+}
+@media (min-width: 1280px) {
+  .bio-section {
+    padding: 0 112px;
   }
 }
 .bio-section__wrapper {
@@ -261,6 +293,11 @@ body {
     padding: 0 32px;
   }
 }
+@media (min-width: 1280px) {
+  .photo-gallery {
+    padding: 0 112px;
+  }
+}
 .photo-gallery__title {
   font-size: 8rem;
   font-family: "Avenir-Demi";
@@ -316,6 +353,11 @@ body {
     position: relative;
   }
 }
+@media (min-width: 1280px) {
+  .foot-bar {
+    padding: 0 112px;
+  }
+}
 .foot-bar__title {
   font-size: 8rem;
   font-family: "Avenir-Demi";
@@ -360,6 +402,11 @@ body {
     width: 30px;
   }
 }
+@media (min-width: 1280px) {
+  .foot-bar__social {
+    padding-left: 56px;
+  }
+}
 .foot-bar__contact-container {
   font-size: 4.33rem;
   font-family: "Avenir-Regular";
@@ -370,6 +417,7 @@ body {
 @media (min-width: 767px) {
   .foot-bar__contact-container {
     display: flex;
+    width: 100%;
     font-size: 4.67rem;
     font-family: "Avenir-Regular";
     line-height: 20px;
@@ -378,6 +426,11 @@ body {
   }
   .foot-bar__contact-container div:nth-child(2) {
     padding: 0 48px;
+  }
+}
+@media (min-width: 1280px) {
+  .foot-bar__contact-container div:nth-child(2) {
+    padding: 0 72px;
   }
 }
 .foot-bar__contact-name-company {
@@ -400,12 +453,21 @@ body {
     right: 32px;
   }
 }
+@media (min-width: 1280px) {
+  .foot-bar__copyright-logo {
+    right: 112px;
+  }
+}
 .foot-bar__copyright-text {
   font-size: 3.6rem;
   padding: 16px 0;
-  font-size: 4.67rem;
-  font-family: "Avenir-Regular";
-  line-height: 20px;
-  padding-top: 0;
-  padding-bottom: 36px;
+}
+@media (min-width: 767px) {
+  .foot-bar__copyright-text {
+    font-size: 4.67rem;
+    font-family: "Avenir-Regular";
+    line-height: 20px;
+    padding-top: 0;
+    padding-bottom: 36px;
+  }
 }/*# sourceMappingURL=bio.css.map */
