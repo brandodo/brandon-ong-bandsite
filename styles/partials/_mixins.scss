@@ -1,10 +1,12 @@
-@mixin textFormat($fontSize, $fontFam, $lineHeight, $padTop, $padBot) {
-  font-size: $fontSize;
-  font-family: $fontFam;
-  line-height: $lineHeight;
-  padding-top: $padTop;
-  padding-bottom: $padBot;
-}
+@use './variables';
+
+// @mixin textFormat($fontSize, $fontFam, $lineHeight, $padTop, $padBot) {
+//   font-size: $fontSize;
+//   font-family: $fontFam;
+//   line-height: $lineHeight;
+//   padding-top: $padTop;
+//   padding-bottom: $padBot;
+// }
 
 @mixin tablet {
   @media (min-width: 767px) {
@@ -16,4 +18,110 @@
   @media (min-width: 1280px) {
     @content;
   }
+}
+
+@mixin flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin titleHeader {
+  font-size: variables.$default-header-size;
+  font-family: variables.$font-demi;
+  line-height: variables.$default-header-lh;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@mixin titleHeaderTablet {
+  font-size: variables.$tablet-title-size;
+  font-family: variables.$font-demi;
+  line-height: variables.$tablet-title-lh;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@mixin pageHeader {
+  font-size: variables.$default-header-size;
+  font-family: variables.$font-demi;
+  line-height: variables.$default-header-lh;
+  padding-top: variables.$padding-three;
+  padding-bottom: variables.$padding-two;
+}
+
+@mixin pageHeaderTablet {
+  font-size: variables.$tablet-header-size;
+  font-family: variables.$font-demi;
+  line-height: variables.$tablet-header-lh;
+  padding-top: variables.$padding-six;
+  padding-bottom: variables.$tablet-padding-bot;
+}
+
+@mixin subHeader {
+  font-size: variables.$default-sub-header-size;
+  font-family: variables.$font-regular;
+  line-height: variables.$default-sub-header-lh;
+  padding-top: variables.$default-padding-top;
+  padding-bottom: variables.$default-padding-bot;
+}
+
+@mixin subHeaderTablet {
+  font-size: variables.$tablet-sub-header-size;
+  font-family: variables.$font-regular;
+  line-height: variables.$tablet-sub-header-lh;
+  padding-top: variables.$default-padding-top;
+  padding-bottom: variables.$default-padding-bot;
+}
+
+@mixin bodyText {
+  font-size: variables.$default-text-size;
+  font-family: variables.$font-regular;
+  line-height: variables.$default-text-lh;
+  padding-top: 0;
+  padding-bottom: variables.$default-padding-bot;
+}
+
+@mixin bodyTextTablet {
+  font-size: variables.$tablet-text-size;
+  font-family: variables.$font-regular;
+  line-height: variables.$tablet-body-lh;
+  padding-top: 0;
+  padding-bottom: variables.$default-padding-bot;
+}
+
+@mixin quoteText {
+  font-size: variables.$default-sub-header-size;
+  font-family: variables.$font-demi;
+  line-height: variables.$default-sub-header-lh;
+  padding-top: variables.$padding-two;
+  padding-bottom: variables.$padding-increment;
+}
+
+@mixin quoteTextTablet {
+  font-size: variables.$tablet-sub-header-size;
+  font-family: variables.$font-demi;
+  line-height: variables.$tablet-sub-header-lh;
+  padding-top: 36px;
+  padding-bottom: 12px;
+}
+
+@mixin quoteAuthor {
+  font-size: variables.$default-text-size;
+  font-family: variables.$font-demi;
+  line-height: variables.$default-text-lh;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@mixin quoteAuthorTablet {
+  font-size: 6rem;
+  font-family: variables.$font-demi;
+  line-height: variables.$tablet-body-lh;
+  padding-top: 0;
+  padding-bottom: variables.$tablet-padding-bot;
 }

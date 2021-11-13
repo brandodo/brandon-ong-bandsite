@@ -78,6 +78,13 @@ body {
         margin: 0 variables.$padding-three;
         max-width: fit-content;
       }
+
+      @include mixins.desktop {
+        &:hover {
+          font-family: variables.$font-demi;
+          border-bottom: 4px solid variables.$alt-bg-color;
+        }
+      }
     }
 
     &-link {

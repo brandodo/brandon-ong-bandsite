@@ -94,6 +94,12 @@ body {
     max-width: fit-content;
   }
 }
+@media (min-width: 1280px) {
+  .nav-bar__menu-option:hover {
+    font-family: "Avenir-Demi";
+    border-bottom: 4px solid #fafafa;
+  }
+}
 .nav-bar__menu-link {
   width: 100%;
   text-decoration: none;
@@ -209,6 +215,13 @@ body {
     padding-bottom: 36px;
   }
 }
+.bio-section__image-container {
+  background-image: url("../assets/images/band.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: calc(250px + 10%) px;
+}
 .bio-section__quote {
   font-size: 4.67rem;
   font-family: "Avenir-Demi";
@@ -251,7 +264,7 @@ body {
 @media (min-width: 767px) {
   .bio-section__band-name {
     font-size: 8rem;
-    font-family: "Avenir-Demi";
+    font-family: "Avenir-Regular";
     line-height: 32px;
     padding-top: 24px;
     padding-bottom: 16px;
@@ -277,7 +290,7 @@ body {
     font-family: "Avenir-Regular";
     line-height: 22px;
     padding-top: 0;
-    padding-bottom: 36px;
+    padding-bottom: 16px;
     width: 47%;
   }
 }
@@ -412,7 +425,7 @@ body {
   font-family: "Avenir-Regular";
   line-height: 18px;
   padding-top: 0;
-  padding-bottom: 24px;
+  padding-bottom: 16px;
 }
 @media (min-width: 767px) {
   .foot-bar__contact-container {
@@ -420,9 +433,10 @@ body {
     width: 100%;
     font-size: 4.67rem;
     font-family: "Avenir-Regular";
-    line-height: 20px;
+    line-height: 22px;
     padding-top: 0;
-    padding-bottom: 36px;
+    padding-bottom: 16px;
+    line-height: 20px;
   }
   .foot-bar__contact-container div:nth-child(2) {
     padding: 0 48px;
@@ -466,8 +480,9 @@ body {
   .foot-bar__copyright-text {
     font-size: 4.67rem;
     font-family: "Avenir-Regular";
-    line-height: 20px;
+    line-height: 22px;
     padding-top: 0;
-    padding-bottom: 36px;
+    padding-bottom: 16px;
+    line-height: 20px;
   }
 }/*# sourceMappingURL=bio.css.map */

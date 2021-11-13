@@ -35,26 +35,14 @@
   }
 
   &__title {
-    @include mixins.textFormat(
-      variables.$default-header-size,
-      variables.$font-demi,
-      variables.$default-header-lh,
-      0,
-      0
-    );
+    @include mixins.titleHeader;
     color: variables.$primary-text-color;
     position: absolute;
     padding-left: variables.$padding-two;
     z-index: 1;
 
     @include mixins.tablet {
-      @include mixins.textFormat(
-        variables.$tablet-title-size,
-        variables.$font-demi,
-        variables.$tablet-title-lh,
-        0,
-        0
-      );
+      @include mixins.titleHeaderTablet;
       padding-left: variables.$padding-four;
     }
 
@@ -66,8 +54,7 @@
 }
 
 .bio-section {
-  display: flex;
-  flex-direction: column;
+  @include mixins.flexCol;
   padding: 0 variables.$padding-two;
 
   @include mixins.tablet {
@@ -79,8 +66,8 @@
   }
 
   &__wrapper {
-    display: flex;
-    flex-direction: column;
+    @include mixins.flexCol;
+
 
     @include mixins.tablet {
       padding: 0 variables.$padding-seven;
@@ -88,128 +75,72 @@
   }
 
   &__title {
-    @include mixins.textFormat(
-      variables.$default-header-size,
-      variables.$font-demi,
-      variables.$default-header-lh,
-      variables.$padding-three,
-      variables.$padding-two
-    );
+    @include mixins.pageHeader;
     @include mixins.tablet {
-      @include mixins.textFormat(
-        variables.$tablet-header-size,
-        variables.$font-demi,
-        variables.$tablet-header-lh,
-        variables.$padding-six,
-        variables.$tablet-padding-bot
-      );
+      @include mixins.pageHeaderTablet;
     }
   }
 
-  // &__image-container {
-  //   background-image: url('../assets/images/band.jpg');
-  //   background-position: center center;
-  //   background-size: cover;
-  //   width: 100%;
-  //   height: calc(100% - 500px);
+  &__image-container {
+    background-image: url('../assets/images/band.jpg');
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: calc(250px + 10%)px;
+  }
 
   //   @include mixins.tablet {
   //     height: 350px;
   //   }
   // }
 
-  &__quote {
-    @include mixins.textFormat(
-      variables.$default-sub-header-size,
-      variables.$font-demi,
-      variables.$default-sub-header-lh,
-      variables.$padding-two,
-      variables.$padding-increment
-    );
+  // &__image {
+    // transform: scale(1);
+    // position: relative;
+    // left: -50px;
+    // object-fit: contain;
+    // object-position: center center;
+  // }
 
+  &__quote {
+    @include mixins.quoteText;
     @include mixins.tablet {
-      @include mixins.textFormat(
-        variables.$tablet-sub-header-size,
-        variables.$font-demi,
-        variables.$tablet-sub-header-lh,
-        36px,
-        12px
-      );
+      @include mixins.quoteTextTablet;
     }
   }
 
   &__quote-name {
-    @include mixins.textFormat(
-      variables.$default-text-size,
-      variables.$font-demi,
-      variables.$default-text-lh,
-      0,
-      0
-    );
+    @include mixins.quoteAuthor;
     @include mixins.tablet {
-      @include mixins.textFormat(
-        6rem,
-        variables.$font-demi,
-        variables.$tablet-body-lh,
-        0,
-        variables.$tablet-padding-bot
-      );
+      @include mixins.quoteAuthorTablet;
     }
   }
 
   &__band-name {
-    @include mixins.textFormat(
-      variables.$default-sub-header-size,
-      variables.$font-regular,
-      variables.$default-sub-header-lh,
-      variables.$default-padding-top,
-      variables.$default-padding-bot
-    );
-
+    @include mixins.subHeader;
     @include mixins.tablet {
-      @include mixins.textFormat(
-        variables.$tablet-sub-header-size,
-        variables.$font-demi,
-        variables.$tablet-sub-header-lh,
-        variables.$default-padding-top,
-        variables.$default-padding-bot
-      );
+      @include mixins.subHeaderTablet;
     }
   }
 
   &__bio-container {
     @include mixins.tablet {
-      display: flex;
-      flex-direction: row;
+      @include mixins.flexRow;
       justify-content: space-between;
     }
   }
 
   &__band-bio-text {
-    @include mixins.textFormat(
-      variables.$default-text-size,
-      variables.$font-regular,
-      variables.$default-text-lh,
-      0,
-      variables.$default-padding-bot
-    );
-
+    @include mixins.bodyText;
     @include mixins.tablet {
-      @include mixins.textFormat(
-        variables.$tablet-text-size,
-        variables.$font-regular,
-        variables.$tablet-body-lh,
-        0,
-        variables.$tablet-padding-bot
-      );
+      @include mixins.bodyTextTablet;
       width: 47%;
     }
   }
 }
 
 .photo-gallery {
-  display: flex;
-  flex-direction: column;
+  @include mixins.flexCol;
   padding: 0 variables.$padding-two;
   background-color: variables.$alt-bg-color;
 
@@ -222,28 +153,14 @@
   }
 
   &__title {
-    @include mixins.textFormat(
-      variables.$default-header-size,
-      variables.$font-demi,
-      variables.$default-header-lh,
-      variables.$default-padding-top,
-      variables.$default-padding-bot
-    );
+    @include mixins.pageHeader;
     @include mixins.tablet {
-      @include mixins.textFormat(
-        variables.$tablet-header-size,
-        variables.$font-demi,
-        variables.$tablet-header-lh,
-        variables.$tablet-padding-top,
-        variables.$tablet-padding-bot
-      );
+      @include mixins.pageHeaderTablet;
     }
   }
 
   &__image-container {
-    display: flex;
-    flex-direction: column;
-
+    @include mixins.flexCol;
     @include mixins.tablet {
       flex-direction: row;
       justify-content: space-between;
@@ -254,7 +171,6 @@
 
   &__image {
     padding-bottom: variables.$padding-two;
-
     @include mixins.tablet {
       width: 32%;
       padding-bottom: variables.$padding-two;
@@ -263,15 +179,13 @@
 }
 
 .foot-bar {
-  display: flex;
-  flex-direction: column;
+  @include mixins.flexCol;
   background-color: variables.$primary-bg-color;
   color: variables.$primary-text-color;
   padding: 0 variables.$padding-two;
 
   @include mixins.tablet {
-    display: flex;
-    flex-direction: row;
+    @include mixins.flexRow;
     flex-wrap: wrap;
     align-items: center;
     padding: 0 variables.$padding-four;
@@ -283,21 +197,9 @@
   }
 
   &__title {
-    @include mixins.textFormat(
-      variables.$default-header-size,
-      variables.$font-demi,
-      variables.$default-header-lh,
-      variables.$default-padding-top,
-      variables.$default-padding-bot
-    );
+    @include mixins.pageHeader;
     @include mixins.tablet {
-      @include mixins.textFormat(
-        variables.$tablet-header-size,
-        variables.$font-demi,
-        variables.$tablet-header-lh,
-        variables.$tablet-padding-top,
-        variables.$tablet-padding-bot
-      );
+      @include mixins.pageHeaderTablet;
     }
   }
 
@@ -336,24 +238,13 @@
   }
 
   &__contact-container {
-    @include mixins.textFormat(
-      variables.$default-text-size,
-      variables.$font-regular,
-      variables.$default-text-lh,
-      0,
-      variables.$padding-three
-    );
+    @include mixins.bodyText;
 
     @include mixins.tablet {
       display: flex;
       width: 100%;
-      @include mixins.textFormat(
-        variables.$tablet-text-size,
-        variables.$font-regular,
-        variables.$tablet-foot-lh,
-        0,
-        variables.$tablet-padding-bot
-      );
+      @include mixins.bodyTextTablet;
+      line-height: variables.$tablet-foot-lh;
 
       & div:nth-child(2) {
         padding: 0 variables.$padding-six;
@@ -399,13 +290,8 @@
     padding: variables.$padding-two 0;
 
     @include mixins.tablet {
-      @include mixins.textFormat(
-        variables.$tablet-text-size,
-        variables.$font-regular,
-        variables.$tablet-foot-lh,
-        0,
-        variables.$tablet-padding-bot
-      );
+      @include mixins.bodyTextTablet;
+      line-height: variables.$tablet-foot-lh;
     }
   }
 }
