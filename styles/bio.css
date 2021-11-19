@@ -26,11 +26,24 @@ body {
   width: 100%;
 }
 
+.dead-space {
+  width: 100%;
+  height: 89px;
+}
+@media (min-width: 767px) {
+  .dead-space {
+    display: none;
+  }
+}
+
 .nav-bar {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #323232;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
 @media (min-width: 767px) {
   .nav-bar {
@@ -116,9 +129,10 @@ body {
   align-items: center;
   background-image: url("../assets/images/hero-bio.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: top;
   height: 200px;
   position: relative;
+  z-index: -1;
 }
 @media (min-width: 767px) {
   .hero-section {
@@ -215,6 +229,11 @@ body {
     padding-bottom: 36px;
   }
 }
+.bio-section__image {
+  -webkit-clip-path: inset(9% 0 9% 0);
+          clip-path: inset(9% 0 9% 0);
+  margin: -6% 0;
+}
 .bio-section__quote {
   font-size: 4.67rem;
   font-family: "Avenir-Demi";
@@ -229,6 +248,11 @@ body {
     line-height: 32px;
     padding-top: 36px;
     padding-bottom: 12px;
+  }
+}
+@media (min-width: 1280px) {
+  .bio-section__quote {
+    width: 75%;
   }
 }
 .bio-section__quote-name {
@@ -338,7 +362,7 @@ body {
 @media (min-width: 767px) {
   .photo-gallery__image {
     width: 32%;
-    padding-bottom: 24px;
+    padding-bottom: 16px;
   }
 }
 @media (min-width: 1280px) {

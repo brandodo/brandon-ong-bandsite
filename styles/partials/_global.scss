@@ -16,11 +16,43 @@ body {
   width: 100%;
 }
 
+// html:not([data-scroll="0"]) .to-top {
+//   display: inline;
+// }
+
+// .to-top {
+//   font-size: 10rem;
+//   text-align: center;
+//   color: black;
+//   line-height: 65px;
+//   width: 50px;
+//   height: 50px;
+//   background-color: white;
+//   border: 2px solid black;
+//   position: fixed;
+//   z-index: 1;
+//   right: 10px;
+//   bottom: 10px;
+//   display: none;
+// }
+
+.dead-space {
+  width: 100%;
+  height: 89px;
+
+  @include mixins.tablet {
+    display: none;
+  }
+}
+
 .nav-bar {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: variables.$primary-bg-color;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 
   @include mixins.tablet {
     display: flex;
@@ -32,7 +64,7 @@ body {
     position: fixed;
     z-index: 1;
     width: 100%;
-    padding: 0 variables.$padding-ten+variables.$padding-four;
+    padding: 0 variables.$padding-ten + variables.$padding-four;
   }
 
   &__image {
