@@ -175,7 +175,7 @@
 
     @include mixins.tablet {
       width: 32%;
-      padding-bottom: variables.$padding-two;
+      padding-bottom: variables.$padding-three;
     };
 
     @include mixins.desktop {
