@@ -137,6 +137,7 @@ body {
 @media (min-width: 767px) {
   .hero-section {
     height: 500px;
+    padding-top: 64px;
   }
 }
 @media (min-width: 1280px) {

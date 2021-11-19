@@ -11,12 +11,11 @@
   background-position: top;
   height: 200px;
   position: relative;
-  // padding-top: 89px;
   z-index: -1;
 
   @include mixins.tablet {
     height: 500px;
-    // padding-top: variables.$padding-eight;
+    padding-top: variables.$padding-eight;
   }
 
   @include mixins.desktop {
@@ -83,19 +82,6 @@
       @include mixins.pageHeaderTablet;
     }
   }
-
-  // &__image-container {
-  //   background-image: url('../assets/images/band.jpg');
-  //   background-position: center;
-  //   background-size: cover;
-  //   width: 100%;
-  //   height: 250px;
-  // }
-
-  //   @include mixins.tablet {
-  //     height: 350px;
-  //   }
-  // }
 
   &__image {
     clip-path: inset(9% 0 9% 0);
