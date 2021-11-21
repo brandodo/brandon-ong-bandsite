@@ -1,12 +1,12 @@
 @use './variables';
 
-// @mixin textFormat($fontSize, $fontFam, $lineHeight, $padTop, $padBot) {
-//   font-size: $fontSize;
-//   font-family: $fontFam;
-//   line-height: $lineHeight;
-//   padding-top: $padTop;
-//   padding-bottom: $padBot;
-// }
+@mixin textFormat($fontSize, $fontFam, $lineHeight, $padTop, $padBot) {
+  font-size: $fontSize;
+  font-family: $fontFam;
+  line-height: $lineHeight;
+  padding-top: $padTop;
+  padding-bottom: $padBot;
+}
 
 @mixin tablet {
   @media (min-width: 767px) {
