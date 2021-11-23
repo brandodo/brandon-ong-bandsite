@@ -179,183 +179,134 @@
 .comments-section {
   @include mixins.flexCol;
   padding: 0 variables.$padding-two;
-  
-  &__header {
-    @include mixins.pageHeader;
+
+  &__divider {
+    stroke-width: 1px;
+    color: variables.$form-item-color;
   }
 
-  &__user {
+  &__header {
+    @include mixins.pageHeader;
+    letter-spacing: 0.5px;
+  }
 
-    &-container {
-      display: flex;
-      width: 100%;
-      justify-content: center;
-    }
+  &__comment-form {
+    @include mixins.flexRow;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: variables.$padding-two;
+  }
 
-    &-image {
-      background-image: url('../assets/images/Mohan-muruge.jpg');
-      background-position: center;
-      background-size: cover;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      margin-top: variables.$padding-five;
-      margin-right: variables.$padding-two;
-    }
+  &__image-container {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
   }
 
   &__input {
     &-container {
       @include mixins.flexCol;
-
+      width: calc(100% - 48px);
     }
 
     &-label {
       color: variables.$secondary-text-color;
       @include mixins.textFormat(
-        variables.$default-text-size,
-        variables.$font-demi,
+        10px,
+        variables.$font-regular,
         variables.$default-text-lh,
         0,
-        variables.$padding-increment
-      ); 
+        4px
+      );
     }
 
     &-field {
+      @include mixins.textFormat(
+        variables.$default-text-size,
+        variables.$font-regular,
+        variables.$default-text-lh,
+        0,
+        0
+      );
+      color: variables.$primary-bg-color;
       min-height: 36px;
       width: 100%;
+      background-color: variables.$alt-bg-color;
       border-radius: 4px;
       border: 1px solid variables.$form-item-color;
       padding: 12px;
       margin-bottom: variables.$padding-two;
+      box-sizing: border-box;
     }
 
     &-submit {
-      width: 100%;
-      color: variables.$secondary-text-color;
+      @include mixins.textFormat(14px, variables.$font-demi, 20px, 0, 0);
+      letter-spacing: 1px;
+      min-width: 150px;
+      height: 40px;
+      color: variables.$primary-text-color;
       background-color: variables.$primary-bg-color;
+      padding: 0 32px;
+      border: none;
+      border-radius: 4px;
     }
   }
+
+  &__comments-container {
+    padding-bottom: variables.$padding-two;
+  }
+  
+  &__comment-posted {
+    @include mixins.flexRow;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: variables.$padding-two;
+  }
+
+  &__user {
+    &-image {
+      background-image: url("../assets/images/Mohan-muruge.jpg");
+      background-position: center;
+      background-size: cover;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin-top: variables.$padding-three;
+
+      &--placeholder {
+        background-image: none;
+        background-color: variables.$form-item-color;
+        margin: 0;
+      }
+    }
+
+    &-comment-container {
+      @include mixins.bodyText;
+      width: calc(100% - 48px);
+    }
+
+    &-info {
+      @include mixins.flexRow;
+      justify-content: space-between;
+      padding-bottom: variables.$padding-increment;
+    }
+
+    &-name {
+      font-family: variables.$font-demi;
+    }
+
+    &-date {
+      color: variables.$secondary-text-color;
+    }
+  }
+}
+
+::placeholder {
+  color: black;
+  opacity: 0.75;
 }
 
 #comment-box {
   resize: none;
-}
-
-.foot-bar {
-  @include mixins.flexCol;
-  background-color: variables.$primary-bg-color;
-  color: variables.$primary-text-color;
-  padding: 0 variables.$padding-two;
-
-  @include mixins.tablet {
-    @include mixins.flexRow;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 0 variables.$padding-four;
-    position: relative;
-  }
-
-  @include mixins.desktop {
-    padding: 0 variables.$padding-ten + variables.$padding-four;
-  }
-
-  &__title {
-    @include mixins.pageHeader;
-    @include mixins.tablet {
-      @include mixins.pageHeaderTablet;
-    }
-  }
-
-  &__social {
-    display: flex;
-    justify-content: flex-start;
-    padding-bottom: variables.$padding-three;
-
-    & :nth-of-type(2) {
-      margin: 0 variables.$padding-four;
-    }
-
-    @include mixins.tablet {
-      height: fit-content;
-      padding: 0;
-      padding-top: variables.$padding-increment;
-      padding-left: variables.$padding-four;
-      align-items: flex-end;
-
-      &-icon {
-        width: 25px;
-
-        &--mid {
-          width: 15px;
-        }
-
-        &--last {
-          width: 30px;
-        }
-      }
-    }
-
-    @include mixins.desktop {
-      padding-left: variables.$padding-seven;
-    }
-  }
-
-  &__contact-container {
-    @include mixins.bodyText;
-
-    @include mixins.tablet {
-      display: flex;
-      width: 100%;
-      @include mixins.bodyTextTablet;
-      line-height: variables.$tablet-foot-lh;
-
-      & div:nth-child(2) {
-        padding: 0 variables.$padding-six;
-      }
-    }
-
-    @include mixins.desktop {
-      & div:nth-child(2) {
-        padding: 0 variables.$padding-nine;
-      }
-    }
-  }
-
-  &__contact-name-company {
-    font-family: variables.$font-demi;
-    padding-bottom: variables.$padding-two;
-  }
-
-  &__contact-address {
-    padding-bottom: variables.$padding-two;
-  }
-
-  &__contact-email {
-    padding-bottom: variables.$padding-three;
-  }
-
-  &__copyright-logo {
-    padding-top: variables.$padding-three;
-
-    @include mixins.tablet {
-      position: absolute;
-      top: 40px;
-      right: 32px;
-    }
-
-    @include mixins.desktop {
-      right: 112px;
-    }
-  }
-
-  &__copyright-text {
-    font-size: 3.6rem;
-    padding: variables.$padding-two 0;
-
-    @include mixins.tablet {
-      @include mixins.bodyTextTablet;
-      line-height: variables.$tablet-foot-lh;
-    }
-  }
 }

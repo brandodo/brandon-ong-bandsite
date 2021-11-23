@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Bees Knees - Home</title>
+    <script src="./scripts/index-page.js"></script>
 
     <style>
       #bio-option {
@@ -141,25 +142,110 @@
 
     <section class="comments-section">
       <h2 class="comments-section__header">Join the Conversation</h2>
-      
-      <div class="comments-section__user-container">
-        <!-- <img
-          src="./assets/images/Mohan-muruge.jpg"
-          alt="user-profile-image"
-          class="comments-section__user-image"
-        /> -->
-        <div class="comments-section__user-image"></div>
+
+      <form action="" class="comments-section__comment-form">
+        <div class="comments-section__image-container">
+          <div class="comments-section__user-image"></div>
+        </div>
         <div class="comments-section__input-container">
           <label for="" class="comments-section__input-label">NAME</label>
-          <input type="text" class="comments-section__input-field" />
+          <input
+            type="text"
+            id="user-name"
+            class="comments-section__input-field"
+            placeholder="Enter your name"
+          />
           <label for="" class="comments-section__input-label">COMMENT</label>
-          <textarea name="comment-box" id="comment-box" class="comments-section__input-field" cols="30" rows="4"></textarea>
-          <button class="comments-section__input-submit">COMMENT</button>
+          <textarea
+            name="comment-box"
+            id="comment-box"
+            class="comments-section__input-field"
+            placeholder="Add a new comment"
+            cols="30"
+            rows="5"
+          ></textarea>
+          <input type="submit" class="comments-section__input-submit" value="COMMENT">
         </div>
-      </div>
+      </form>
 
-      <div class="comments-section__posted-comments-container">
+      <hr class="comments-section__divider" />
 
+      <div class="comments-section__comments-container">
+        <article class="comments-section__comment-posted">
+          <div class="comments-section__image-container">
+            <div
+              class="
+                comments-section__user-image
+                comments-section__user-image--placeholder
+              "
+            ></div>
+          </div>
+
+          <div class="comments-section__user-comment-container">
+            <div class="comments-section__user-info">
+              <p class="comments-section__user-name">Connor Walton</p>
+              <p class="comments-section__user-date">02/17/2021</p>
+            </div>
+            <div class="comments-section__user-comment">
+              This is art. This is inexplicable magic expressed in the purest
+              way, everything that makes up this majestic work deserves
+              reverence. Let us appreciate this for what it is and what it
+              contains.
+            </div>
+          </div>
+        </article>
+
+        <hr class="comments-section__divider" />
+
+        <article class="comments-section__comment-posted">
+          <div class="comments-section__image-container">
+            <div
+              class="
+                comments-section__user-image
+                comments-section__user-image--placeholder
+              "
+            ></div>
+          </div>
+
+          <div class="comments-section__user-comment-container">
+            <div class="comments-section__user-info">
+              <p class="comments-section__user-name">Emilie Beach</p>
+              <p class="comments-section__user-date">01/09/2021</p>
+            </div>
+            <div class="comments-section__user-comment">
+              I feel blessed to have seen them in person. What a show! They were
+              just perfection. If there was one day of my life I could relive,
+              this would be it. What an incredible day.
+            </div>
+          </div>
+        </article>
+
+        <hr class="comments-section__divider" />
+
+        <article class="comments-section__comment-posted">
+          <div class="comments-section__image-container">
+            <div
+              class="
+                comments-section__user-image
+                comments-section__user-image--placeholder
+              "
+            ></div>
+          </div>
+
+          <div class="comments-section__user-comment-container">
+            <div class="comments-section__user-info">
+              <p class="comments-section__user-name">Miles Acosta</p>
+              <p class="comments-section__user-date">12/20/2020</p>
+            </div>
+            <div class="comments-section__user-comment">
+              I can t stop listening. Every time I hear one of their songs the
+              vocals it gives me goosebumps. Shivers straight down my spine.
+              What a beautiful expression of creativity. Can t get enough.
+            </div>
+          </div>
+        </article>
+
+        <hr class="comments-section__divider" />
       </div>
     </section>
 
