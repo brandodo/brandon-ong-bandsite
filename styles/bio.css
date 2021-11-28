@@ -518,6 +518,18 @@ body {
   flex-direction: column;
   padding: 0 16px;
 }
+@media (min-width: 767px) {
+  .comments-section {
+    padding: 0 32px;
+    padding-bottom: 24px;
+  }
+}
+@media (min-width: 1280px) {
+  .comments-section {
+    padding: 0 112px;
+    padding-bottom: 32px;
+  }
+}
 .comments-section__divider {
   stroke-width: 1px;
   color: #e1e1e1;
@@ -530,12 +542,60 @@ body {
   padding-bottom: 16px;
   letter-spacing: 0.5px;
 }
+@media (min-width: 767px) {
+  .comments-section__header {
+    font-size: 12rem;
+    font-family: "Avenir-Demi";
+    line-height: 44px;
+    padding-top: 48px;
+    padding-bottom: 36px;
+  }
+}
 .comments-section__comment-form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
   padding-bottom: 16px;
+}
+@media (min-width: 767px) {
+  .comments-section__comment-form {
+    padding: 0 56px;
+    padding-bottom: 16px;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 1280px) {
+  .comments-section__comment-form {
+    padding: 0 264px;
+    padding-bottom: 16px;
+  }
+}
+.comments-section__comments-container {
+  padding-bottom: 16px;
+}
+@media (min-width: 767px) {
+  .comments-section__comments-container {
+    padding: 0 56px;
+  }
+}
+@media (min-width: 1280px) {
+  .comments-section__comments-container {
+    padding: 0 264px;
+  }
+}
+.comments-section__comment-posted {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 16px;
+}
+@media (min-width: 767px) {
+  .comments-section__comment-posted {
+    padding-top: 16px;
+  }
 }
 .comments-section__image-container {
   display: flex;
@@ -549,6 +609,11 @@ body {
   flex-direction: column;
   width: calc(100% - 48px);
 }
+@media (min-width: 767px) {
+  .comments-section__input-container {
+    width: calc(100% - 60px);
+  }
+}
 .comments-section__input-label {
   color: #afafaf;
   font-size: 10px;
@@ -557,30 +622,47 @@ body {
   padding-top: 0;
   padding-bottom: 4px;
 }
+@media (min-width: 767px) {
+  .comments-section__input-label {
+    font-size: 12px;
+    font-family: "Avenir-Demi";
+    line-height: 20px;
+    padding-top: 0;
+    padding-bottom: 4px;
+  }
+}
 .comments-section__input-field {
-  font-size: 4.33rem;
-  font-family: "Avenir-Regular";
-  line-height: 18px;
-  padding-top: 0;
-  padding-bottom: 0;
   color: #323232;
   min-height: 36px;
   width: 100%;
   background-color: #fafafa;
   border-radius: 4px;
   border: 1px solid #e1e1e1;
-  padding: 12px;
+  padding: 0 12px;
   margin-bottom: 16px;
   box-sizing: border-box;
+  font-size: 4.33rem;
+  font-family: "Avenir-Regular";
+  line-height: 18px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+@media (min-width: 767px) {
+  .comments-section__input-field {
+    padding: 0 16px;
+    font-size: 4.67rem;
+    font-family: "Avenir-Regular";
+    line-height: 22px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
 }
 .comments-section__input-submit {
   font-size: 14px;
-  font-family: "Avenir-Demi";
+  font-family: "Avenir-Regular";
   line-height: 20px;
   padding-top: 0;
   padding-bottom: 0;
-  letter-spacing: 1px;
-  min-width: 150px;
   height: 40px;
   color: #ffffff;
   background-color: #323232;
@@ -588,16 +670,12 @@ body {
   border: none;
   border-radius: 4px;
 }
-.comments-section__comments-container {
-  padding-bottom: 16px;
-}
-.comments-section__comment-posted {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  padding-top: 16px;
+@media (min-width: 767px) {
+  .comments-section__input-submit {
+    width: 150px;
+    padding: 0 32px;
+    align-self: flex-end;
+  }
 }
 .comments-section__user-image {
   background-image: url("../assets/images/Mohan-muruge.jpg");
@@ -613,6 +691,12 @@ body {
   background-color: #e1e1e1;
   margin: 0;
 }
+@media (min-width: 767px) {
+  .comments-section__user-image {
+    width: 48px;
+    height: 48px;
+  }
+}
 .comments-section__user-comment-container {
   font-size: 4.33rem;
   font-family: "Avenir-Regular";
@@ -620,6 +704,16 @@ body {
   padding-top: 0;
   padding-bottom: 16px;
   width: calc(100% - 48px);
+}
+@media (min-width: 767px) {
+  .comments-section__user-comment-container {
+    width: calc(100% - 60px);
+    font-size: 4.67rem;
+    font-family: "Avenir-Regular";
+    line-height: 22px;
+    padding-top: 0;
+    padding-bottom: 16px;
+  }
 }
 .comments-section__user-info {
   display: flex;

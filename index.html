@@ -143,19 +143,19 @@
     <section class="comments-section">
       <h2 class="comments-section__header">Join the Conversation</h2>
 
-      <form action="" class="comments-section__comment-form">
+      <form class="comments-section__comment-form">
         <div class="comments-section__image-container">
           <div class="comments-section__user-image"></div>
         </div>
         <div class="comments-section__input-container">
-          <label for="" class="comments-section__input-label">NAME</label>
+          <label class="comments-section__input-label">NAME</label>
           <input
             type="text"
             id="user-name"
             class="comments-section__input-field"
             placeholder="Enter your name"
           />
-          <label for="" class="comments-section__input-label">COMMENT</label>
+          <label class="comments-section__input-label">COMMENT</label>
           <textarea
             name="comment-box"
             id="comment-box"
@@ -164,13 +164,17 @@
             cols="30"
             rows="5"
           ></textarea>
-          <input type="submit" class="comments-section__input-submit" value="COMMENT">
+          <input
+            type="submit"
+            class="comments-section__input-submit"
+            value="COMMENT"
+          />
         </div>
       </form>
 
-      <hr class="comments-section__divider" />
-
       <div class="comments-section__comments-container">
+        <hr class="comments-section__divider" />
+
         <article class="comments-section__comment-posted">
           <div class="comments-section__image-container">
             <div

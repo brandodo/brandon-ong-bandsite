@@ -180,6 +180,16 @@
   @include mixins.flexCol;
   padding: 0 variables.$padding-two;
 
+  @include mixins.tablet {
+    padding: 0 variables.$padding-four;
+    padding-bottom: variables.$padding-three;
+  }
+
+  @include mixins.desktop {
+    padding: 0 variables.$padding-ten + variables.$padding-four;
+    padding-bottom: variables.$padding-four;
+  }
+
   &__divider {
     stroke-width: 1px;
     color: variables.$form-item-color;
@@ -188,13 +198,54 @@
   &__header {
     @include mixins.pageHeader;
     letter-spacing: 0.5px;
+
+    @include mixins.tablet {
+      @include mixins.pageHeaderTablet;
+    }
   }
 
-  &__comment-form {
-    @include mixins.flexRow;
-    justify-content: space-between;
-    width: 100%;
-    padding-bottom: variables.$padding-two;
+  &__comment {
+    &-form {
+      @include mixins.flexRow;
+      justify-content: space-between;
+      width: 100%;
+      padding-bottom: variables.$padding-two;
+
+      @include mixins.tablet {
+        padding: 0 variables.$padding-seven;
+        padding-bottom: variables.$padding-two;
+        box-sizing: border-box;
+      }
+
+      @include mixins.desktop {
+        padding: 0 variables.$padding-ten * 3 + variables.$padding-three;
+        padding-bottom: variables.$padding-two;
+      }
+    }
+
+    &s-container {
+      padding-bottom: variables.$padding-two;
+
+      @include mixins.tablet {
+        padding: 0 variables.$padding-seven;
+      }
+
+      @include mixins.desktop {
+        padding: 0 variables.$padding-ten * 3 + variables.$padding-three;
+      }
+    }
+
+    &-posted {
+      @include mixins.flexRow;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      padding-top: variables.$padding-two;
+
+      @include mixins.tablet {
+        padding-top: variables.$padding-two;
+      }
+    }
   }
 
   &__image-container {
@@ -207,6 +258,10 @@
     &-container {
       @include mixins.flexCol;
       width: calc(100% - 48px);
+
+      @include mixins.tablet {
+        width: calc(100% - 60px);
+      }
     }
 
     &-label {
@@ -218,50 +273,60 @@
         0,
         4px
       );
+
+      @include mixins.tablet {
+        @include mixins.textFormat(12px, variables.$font-demi, 20px, 0, 4px);
+      }
     }
 
     &-field {
-      @include mixins.textFormat(
-        variables.$default-text-size,
-        variables.$font-regular,
-        variables.$default-text-lh,
-        0,
-        0
-      );
       color: variables.$primary-bg-color;
       min-height: 36px;
       width: 100%;
       background-color: variables.$alt-bg-color;
       border-radius: 4px;
       border: 1px solid variables.$form-item-color;
-      padding: 12px;
+      padding: 0 12px;
       margin-bottom: variables.$padding-two;
       box-sizing: border-box;
+
+      @include mixins.textFormat(
+        variables.$default-text-size,
+        variables.$font-regular,
+        variables.$default-text-lh,
+        12px,
+        12px
+      );
+
+      @include mixins.tablet {
+        padding: 0 16px;
+        @include mixins.textFormat(
+          variables.$tablet-text-size,
+          variables.$font-regular,
+          variables.$tablet-body-lh,
+          16px,
+          16px
+        );
+      }
     }
 
     &-submit {
-      @include mixins.textFormat(14px, variables.$font-demi, 20px, 0, 0);
-      letter-spacing: 1px;
-      min-width: 150px;
+      @include mixins.textFormat(14px, variables.$font-regular, 20px, 0, 0);
+      // letter-spacing: 1px;
+
       height: 40px;
       color: variables.$primary-text-color;
       background-color: variables.$primary-bg-color;
       padding: 0 32px;
       border: none;
       border-radius: 4px;
-    }
-  }
 
-  &__comments-container {
-    padding-bottom: variables.$padding-two;
-  }
-  
-  &__comment-posted {
-    @include mixins.flexRow;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    padding-top: variables.$padding-two;
+      @include mixins.tablet {
+        width: 150px;
+        padding: 0 32px;
+        align-self: flex-end;
+      }
+    }
   }
 
   &__user {
@@ -279,11 +344,22 @@
         background-color: variables.$form-item-color;
         margin: 0;
       }
+
+      @include mixins.tablet {
+        width: 48px;
+        height: 48px;
+      }
     }
 
     &-comment-container {
       @include mixins.bodyText;
       width: calc(100% - 48px);
+
+      @include mixins.tablet {
+        width: calc(100% - 60px);
+
+        @include mixins.bodyTextTablet;
+      }
     }
 
     &-info {
