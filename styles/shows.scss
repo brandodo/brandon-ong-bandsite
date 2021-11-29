@@ -1,0 +1,67 @@
+@use "./partials/global";
+@use "./partials/variables";
+@use "./partials/mixins";
+@use "./partials/fonts";
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-image: url("../assets/images/hero-shows.jpg");
+  background-size: cover;
+  background-position: top;
+  height: 300px;
+  position: relative;
+
+  @include mixins.tablet {
+    height: 500px;
+    padding-top: variables.$padding-eight;
+  }
+
+  @include mixins.desktop {
+    z-index: -1;
+    height: 675px;
+    padding-top: variables.$padding-eight;
+    background-position: top;
+  }
+
+  &__overlay {
+    background-color: variables.$primary-bg-color;
+    opacity: 50%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    @include mixins.desktop {
+      z-index: -1;
+    }
+  }
+
+  &__title {
+    @include mixins.titleHeader;
+    color: variables.$primary-text-color;
+    padding-left: variables.$padding-two;
+    z-index: 1;
+
+    @include mixins.tablet {
+      @include mixins.titleHeaderTablet;
+      padding-left: variables.$padding-four;
+    }
+
+    @include mixins.desktop {
+      z-index: 0;
+      padding-left: variables.$padding-ten + variables.$padding-four;
+    }
+  }
+
+  &__subtitle {
+    @include mixins.subHeader;
+    padding-left: variables.$padding-two;
+    color: variables.$primary-text-color;
+    z-index: 1;
+  }
+
+  &__sound-cloud {
+    z-index: 1;
+    padding-left: variables.$padding-two;
+  }
+}

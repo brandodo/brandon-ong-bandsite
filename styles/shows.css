@@ -1,0 +1,340 @@
+@font-face {
+  font-family: "Avenir-Regular";
+  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Avenir-Bold";
+  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "Avenir-Demi";
+  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype");
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: 3px;
+  font-family: "Avenir-Regular";
+}
+
+body {
+  width: 100%;
+}
+
+.dead-space {
+  width: 100%;
+  height: 89px;
+}
+@media (min-width: 767px) {
+  .dead-space {
+    display: none;
+  }
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #323232;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+@media (min-width: 767px) {
+  .nav-bar {
+    display: flex;
+    flex-direction: row;
+    padding: 0 32px;
+  }
+}
+@media (min-width: 1280px) {
+  .nav-bar {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    padding: 0 112px;
+  }
+}
+.nav-bar__image-container {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+@media (min-width: 767px) {
+  .nav-bar__image-container {
+    padding: 24px 0;
+    margin-right: 24px;
+  }
+}
+.nav-bar__image-logo {
+  max-height: 20px;
+  max-width: 120px;
+}
+.nav-bar__menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style: none;
+  width: 100%;
+  padding-left: 0;
+  margin: 0;
+}
+@media (min-width: 767px) {
+  .nav-bar__menu {
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+.nav-bar__menu-option {
+  text-align: center;
+  font-size: 4.67rem;
+  width: 100%;
+  padding-bottom: 16px;
+}
+@media (min-width: 767px) {
+  .nav-bar__menu-option {
+    padding: 24px 0;
+    margin: 0 24px;
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+  }
+}
+@media (min-width: 1280px) {
+  .nav-bar__menu-option:hover {
+    font-family: "Avenir-Demi";
+    border-bottom: 4px solid #fafafa;
+  }
+}
+.nav-bar__menu-link {
+  width: 100%;
+  text-decoration: none;
+  color: #ffffff;
+}
+@media (min-width: 767px) {
+  .nav-bar__menu-link {
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+  }
+}
+
+.foot-bar {
+  display: flex;
+  flex-direction: column;
+  background-color: #323232;
+  color: #ffffff;
+  padding: 0 16px;
+}
+@media (min-width: 767px) {
+  .foot-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 32px;
+    position: relative;
+  }
+}
+@media (min-width: 1280px) {
+  .foot-bar {
+    padding: 0 112px;
+  }
+}
+.foot-bar__title {
+  font-size: 8rem;
+  font-family: "Avenir-Demi";
+  line-height: 32px;
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+@media (min-width: 767px) {
+  .foot-bar__title {
+    font-size: 12rem;
+    font-family: "Avenir-Demi";
+    line-height: 44px;
+    padding-top: 48px;
+    padding-bottom: 36px;
+  }
+}
+.foot-bar__social {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 24px;
+}
+.foot-bar__social :nth-of-type(2) {
+  margin: 0 32px;
+}
+@media (min-width: 767px) {
+  .foot-bar__social {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 0;
+    padding-top: 8px;
+    padding-left: 32px;
+    align-items: flex-end;
+  }
+  .foot-bar__social-icon {
+    width: 25px;
+  }
+  .foot-bar__social-icon--mid {
+    width: 15px;
+  }
+  .foot-bar__social-icon--last {
+    width: 30px;
+  }
+}
+@media (min-width: 1280px) {
+  .foot-bar__social {
+    padding-left: 56px;
+  }
+}
+.foot-bar__contact-container {
+  font-size: 4.33rem;
+  font-family: "Avenir-Regular";
+  line-height: 18px;
+  padding-top: 0;
+  padding-bottom: 16px;
+}
+@media (min-width: 767px) {
+  .foot-bar__contact-container {
+    display: flex;
+    width: 100%;
+    font-size: 4.67rem;
+    font-family: "Avenir-Regular";
+    line-height: 22px;
+    padding-top: 0;
+    padding-bottom: 16px;
+    line-height: 20px;
+  }
+  .foot-bar__contact-container div:nth-child(2) {
+    padding: 0 48px;
+  }
+}
+@media (min-width: 1280px) {
+  .foot-bar__contact-container div:nth-child(2) {
+    padding: 0 72px;
+  }
+}
+.foot-bar__contact-name-company {
+  font-family: "Avenir-Demi";
+  padding-bottom: 16px;
+}
+.foot-bar__contact-address {
+  padding-bottom: 16px;
+}
+.foot-bar__contact-email {
+  padding-bottom: 24px;
+}
+.foot-bar__copyright-logo {
+  padding-top: 24px;
+}
+@media (min-width: 767px) {
+  .foot-bar__copyright-logo {
+    position: absolute;
+    top: 40px;
+    right: 32px;
+  }
+}
+@media (min-width: 1280px) {
+  .foot-bar__copyright-logo {
+    right: 112px;
+  }
+}
+.foot-bar__copyright-text {
+  font-size: 3.6rem;
+  padding: 16px 0;
+}
+@media (min-width: 767px) {
+  .foot-bar__copyright-text {
+    font-size: 4.67rem;
+    font-family: "Avenir-Regular";
+    line-height: 22px;
+    padding-top: 0;
+    padding-bottom: 16px;
+    line-height: 20px;
+  }
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-image: url("../assets/images/hero-shows.jpg");
+  background-size: cover;
+  background-position: top;
+  height: 300px;
+  position: relative;
+}
+@media (min-width: 767px) {
+  .hero-section {
+    height: 500px;
+    padding-top: 64px;
+  }
+}
+@media (min-width: 1280px) {
+  .hero-section {
+    z-index: -1;
+    height: 675px;
+    padding-top: 64px;
+    background-position: top;
+  }
+}
+.hero-section__overlay {
+  background-color: #323232;
+  opacity: 50%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+@media (min-width: 1280px) {
+  .hero-section__overlay {
+    z-index: -1;
+  }
+}
+.hero-section__title {
+  font-size: 8rem;
+  font-family: "Avenir-Demi";
+  line-height: 32px;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: #ffffff;
+  padding-left: 16px;
+  z-index: 1;
+}
+@media (min-width: 767px) {
+  .hero-section__title {
+    font-size: 20rem;
+    font-family: "Avenir-Demi";
+    line-height: 68px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 32px;
+  }
+}
+@media (min-width: 1280px) {
+  .hero-section__title {
+    z-index: 0;
+    padding-left: 112px;
+  }
+}
+.hero-section__subtitle {
+  font-size: 4.67rem;
+  font-family: "Avenir-Regular";
+  line-height: 22px;
+  padding-top: 24px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  color: #ffffff;
+  z-index: 1;
+}
+.hero-section__sound-cloud {
+  z-index: 1;
+  padding-left: 16px;
+}/*# sourceMappingURL=shows.css.map */

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             - Constructs a new comment object
             - Pushes a new comment object to an array of comments
             - Clears all comments from the page
-    */
+  */
 
   let nameField = document.querySelector("#user-name");
   let commentField = document.querySelector("#comment-box");
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
-  function displaycomment(commentObject) {
+  function displayComment(commentObject) {
     let parent = document.querySelector(
       ".comments-section__comments-container"
     );
@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     commentContainer.classList.add("comments-section__comment-posted");
     imageContainer.classList.add("comments-section__image-container");
     imageDisplayed.classList.add("comments-section__user-image");
+    imageDisplayed.classList.add("comments-section__user-image--posted");
     textContainer.classList.add("comments-section__user-comment-container");
     commentHeader.classList.add("comments-section__user-info");
     nameText.classList.add("comments-section__user-name");
@@ -92,25 +93,45 @@ document.addEventListener("DOMContentLoaded", () => {
   nameField.addEventListener("input", (e) => {
     if (e.target.value == "") {
       console.log("invalid entry!");
-      // e.target.style.borderColor = 'red';
+      e.target.style.border = "2px solid #D22D2D";
     } else {
+      e.target.style.border = "1px solid #e1e1e1";
+    }
+  });
+
+  commentField.addEventListener("input", (e) => {
+    if (e.target.value == "") {
+      console.log("invalid entry!");
+      e.target.style.border = "2px solid #D22D2D";
+    } else {
+      e.target.style.border = "1px solid #e1e1e1";
     }
   });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    let nameCaptured = nameField.value;
-    let commentCaptured = commentField.value;
 
-    comments.push({
-      username: nameCaptured,
-      timestamp: e.timeStamp,
-      comment: commentCaptured,
-    });
+    if (nameField.value !== "" && commentField.value !== "") {
+      let nameCaptured = nameField.value;
+      let commentCaptured = commentField.value;
+      const datePosted = new Date();
 
-    displaycomment(comments[3]);
+      comments.push({
+        username: nameCaptured,
+        timestamp:
+          datePosted.getMonth() +
+          "/" +
+          datePosted.getDate() +
+          "/" +
+          datePosted.getFullYear(),
+        comment: commentCaptured,
+      });
 
-    console.log("this one: Submitted! Timestamp: " + e.timeStamp);
-    console.log(nameCaptured + " said: " + commentCaptured);
+      displayComment(comments[comments.length - 1]);
+      form.reset();
+
+      // console.log("this one: Submitted! Timestamp: " + e.timeStamp);
+      // console.log(nameCaptured + " said: " + commentCaptured);
+    }
   });
 });
