@@ -306,7 +306,7 @@ body {
   padding-bottom: 0;
   color: #ffffff;
   padding-left: 16px;
-  z-index: 1;
+  z-index: 0;
 }
 @media (min-width: 767px) {
   .hero-section__title {
@@ -332,9 +332,9 @@ body {
   padding-bottom: 16px;
   padding-left: 16px;
   color: #ffffff;
-  z-index: 1;
+  z-index: 0;
 }
 .hero-section__sound-cloud {
-  z-index: 1;
+  z-index: 0;
   padding-left: 16px;
 }/*# sourceMappingURL=shows.css.map */

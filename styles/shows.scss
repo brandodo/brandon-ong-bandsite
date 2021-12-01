@@ -40,7 +40,7 @@
     @include mixins.titleHeader;
     color: variables.$primary-text-color;
     padding-left: variables.$padding-two;
-    z-index: 1;
+    z-index: 0;
 
     @include mixins.tablet {
       @include mixins.titleHeaderTablet;
@@ -57,11 +57,11 @@
     @include mixins.subHeader;
     padding-left: variables.$padding-two;
     color: variables.$primary-text-color;
-    z-index: 1;
+    z-index: 0;
   }
 
   &__sound-cloud {
-    z-index: 1;
+    z-index: 0;
     padding-left: variables.$padding-two;
   }
 }
