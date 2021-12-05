@@ -1,16 +1,16 @@
 @font-face {
   font-family: "Avenir-Regular";
-  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
+  src: url("../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
   font-family: "Avenir-Bold";
-  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
+  src: url("../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
 }
 @font-face {
   font-family: "Avenir-Demi";
-  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype");
+  src: url("../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype");
 }
 * {
   margin: 0;
@@ -138,12 +138,14 @@ body {
     flex-wrap: wrap;
     align-items: center;
     padding: 0 32px;
+    padding-bottom: 32px;
     position: relative;
   }
 }
 @media (min-width: 1280px) {
   .foot-bar {
     padding: 0 112px;
+    padding-bottom: 40px;
   }
 }
 .foot-bar__title {
@@ -262,9 +264,15 @@ body {
   }
 }
 
+#shows-option {
+  font-family: "Avenir-Demi";
+  border-bottom: 4px solid #fafafa;
+}
+
 .hero-section {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: flex-start;
   background-image: url("../assets/images/hero-shows.jpg");
   background-size: cover;
@@ -281,7 +289,10 @@ body {
 }
 @media (min-width: 1280px) {
   .hero-section {
-    z-index: -1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 0;
     height: 675px;
     padding-top: 64px;
     background-position: top;
@@ -293,6 +304,7 @@ body {
   height: 100%;
   width: 100%;
   position: absolute;
+  top: 0px;
 }
 @media (min-width: 1280px) {
   .hero-section__overlay {
@@ -327,8 +339,18 @@ body {
   }
 }
 .hero-section__title-container {
-  width: 60%;
+  width: 230px;
   z-index: 0;
+}
+@media (min-width: 767px) {
+  .hero-section__title-container {
+    width: 560px;
+  }
+}
+@media (min-width: 1280px) {
+  .hero-section__title-container {
+    width: 600px;
+  }
 }
 .hero-section__subtitle {
   font-size: 4.67rem;
@@ -336,6 +358,7 @@ body {
   line-height: 22px;
   padding-top: 24px;
   padding-bottom: 16px;
+  font-weight: 700;
   padding-left: 16px;
   color: #ffffff;
   z-index: 0;
@@ -357,22 +380,44 @@ body {
 }
 .hero-section__sound-cloud {
   z-index: 0;
+  height: 125px;
+  width: 100%;
   box-sizing: border-box;
   padding: 0 16px;
 }
 @media (min-width: 767px) {
   .hero-section__sound-cloud {
     padding: 0 32px;
+    height: 166px;
+    width: 65%;
   }
 }
 @media (min-width: 1280px) {
   .hero-section__sound-cloud {
-    padding-left: 112px;
+    padding-right: 112px;
+    width: 50%;
+    position: relative;
+    top: 15px;
   }
 }
 
 .shows-section {
   padding: 0 16px;
+  padding-bottom: 16px;
+}
+@media (min-width: 767px) {
+  .shows-section {
+    padding: 0 32px;
+    padding-bottom: 32px;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 112px;
+    padding-bottom: 40px;
+  }
 }
 .shows-section__header {
   font-size: 8rem;
@@ -382,6 +427,39 @@ body {
   padding-bottom: 16px;
   padding-bottom: 0;
 }
+@media (min-width: 767px) {
+  .shows-section__header {
+    font-size: 12rem;
+    font-family: "Avenir-Demi";
+    line-height: 44px;
+    padding-top: 48px;
+    padding-bottom: 36px;
+  }
+}
+@media (min-width: 767px) {
+  .shows-section__header-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    padding: 0 8px;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-section__header-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+@media (min-width: 767px) {
+  .shows-section__shows-container {
+    display: grid;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-section__shows-container {
+    padding-top: 48px;
+    width: 75%;
+  }
+}
 .shows-section__shows-card {
   display: flex;
   flex-direction: column;
@@ -390,7 +468,22 @@ body {
 }
 @media (min-width: 767px) {
   .shows-section__shows-card {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-section__shows-card {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .shows-section__shows-card:hover {
+    background-color: #fafafa;
+    cursor: pointer;
   }
 }
 .shows-section__label {
@@ -401,12 +494,40 @@ body {
   padding-bottom: 0;
   color: #afafaf;
 }
+@media (min-width: 767px) {
+  .shows-section__label {
+    display: none;
+  }
+}
+.shows-section__label--tablet {
+  display: none;
+}
+@media (min-width: 767px) {
+  .shows-section__label--tablet {
+    display: flex;
+    font-size: 4.67rem;
+    font-family: "Avenir-Regular";
+    line-height: 22px;
+    padding-top: 0;
+    padding-bottom: 16px;
+    font-weight: 700;
+  }
+}
 .shows-section__date, .shows-section__venue, .shows-section__location {
   font-size: 4.33rem;
   font-family: "Avenir-Regular";
   line-height: 18px;
   padding-top: 0;
   padding-bottom: 16px;
+}
+@media (min-width: 767px) {
+  .shows-section__date, .shows-section__venue, .shows-section__location {
+    font-size: 16px;
+    font-family: "Avenir-Regular";
+    line-height: 20lh;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 .shows-section__date {
   font-weight: 700;
@@ -422,7 +543,24 @@ body {
   color: #ffffff;
   background-color: #323232;
   padding: 0 32px;
-  margin-bottom: 16px;
   border: none;
   border-radius: 4px;
+}
+.shows-section__buy-button:active {
+  background-color: #000000;
+}
+@media (min-width: 767px) {
+  .shows-section__buy-button {
+    width: 150px;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-section__buy-button:hover {
+    background-color: #000000;
+    cursor: pointer;
+  }
+}
+.shows-section__divider {
+  color: #e1e1e1;
+  border: 1px solid #e1e1e1;
 }/*# sourceMappingURL=shows.css.map */

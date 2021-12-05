@@ -1,93 +1,148 @@
-document.addEventListener("DOMContentLoaded", () => {
-  let showsArray = [
-    {
-      date: "Mon Sept 06 2021",
-      venue: "Ronald Lane",
-      location: "San Francisco, CA",
-    },
-    {
-      date: "Tue Sept 21 2021",
-      venue: "Pier 3 East",
-      location: "San Francisco, CA",
-    },
-    {
-      date: "Fri Oct 15 2021",
-      venue: "View Lounge",
-      location: "San Francisco, CA",
-    },
-    {
-      date: "Sat Nov 06 2021",
-      venue: "Hyatt Agency",
-      location: "San Francisco, CA",
-    },
-    {
-      date: "Fri Nov 26 2021",
-      venue: "Moscow Center",
-      location: "San Francisco, CA",
-    },
-    {
-      date: "Wed Dec 15 2021",
-      venue: "Press Club",
-      location: "San Francisco, CA",
-    },
-  ];
+let showsArray = [
+  {
+    date: "Mon Sept 06 2021",
+    venue: "Ronald Lane",
+    location: "San Francisco, CA",
+  },
+  {
+    date: "Tue Sept 21 2021",
+    venue: "Pier 3 East",
+    location: "San Francisco, CA",
+  },
+  {
+    date: "Fri Oct 15 2021",
+    venue: "View Lounge",
+    location: "San Francisco, CA",
+  },
+  {
+    date: "Sat Nov 06 2021",
+    venue: "Hyatt Agency",
+    location: "San Francisco, CA",
+  },
+  {
+    date: "Fri Nov 26 2021",
+    venue: "Moscow Center",
+    location: "San Francisco, CA",
+  },
+  {
+    date: "Wed Dec 15 2021",
+    venue: "Press Club",
+    location: "San Francisco, CA",
+  },
+];
+let showsRow;
 
-  function buildShowsContent(shows) {
-    let footer = document.querySelector(".foot-bar");
-    let showsSection = document.createElement("section");
-    let showsHeader = document.createElement("h1");
-    let showsContainer = document.createElement("div");
+buildShowsContent(showsArray);
 
-    showsSection.classList.add("shows-section");
-    showsHeader.classList.add("shows-section__header");
-    showsHeader.innerText = "Shows";
-    showsContainer.classList.add("shows-section__shows-container");
+// modify click-state for shows row
+showsRow = document.querySelectorAll(".shows-section__shows-card");
+showsRow.forEach((x, i) => {
+  x.addEventListener("click", () => {
+    showsRow.forEach((x) => {
+      x.style.backgroundColor = "";
+    });
+    showsRow[i].style.backgroundColor = "#E1E1E1";
+  });
+});
 
-    for (i = 0; i < shows.length; i++) {
-      let showsCard = document.createElement("div");
-      let dateHeader = document.createElement("p");
-      let dateInfo = document.createElement("p");
-      let venueHeader = document.createElement("p");
-      let venueInfo = document.createElement("p");
-      let locationHeader = document.createElement("p");
-      let locationInfo = document.createElement("p");
-      let buyButton = document.createElement("button");
-      let divider = document.createElement("hr");
+// declare function to build out Shows section
+function buildShowsContent(shows) {
+  let footer = document.querySelector(".foot-bar");
+  let showsSection = document.createElement("section");
+  let showsHeader = document.createElement("h1");
+  let showsContainer = document.createElement("div");
+  let headerContainer = document.createElement("div");
+  let dateHeaderTablet = document.createElement("p");
+  let venueHeaderTablet = document.createElement("p");
+  let locationHeaderTablet = document.createElement("p");
 
-      showsCard.classList.add("shows-section__shows-card");
-      dateHeader.classList.add("shows-section__label");
-      dateInfo.classList.add("shows-section__date");
-      venueHeader.classList.add("shows-section__label");
-      venueInfo.classList.add("shows-section__venue");
-      locationHeader.classList.add("shows-section__label");
-      locationInfo.classList.add("shows-section__location");
-      buyButton.classList.add("shows-section__buy-button");
-      divider.classList.add("shows-section__divider");
+  showsSection.classList.add("shows-section");
+  showsHeader.classList.add("shows-section__header");
+  showsHeader.innerText = "Shows";
+  showsContainer.classList.add("shows-section__shows-container");
+  headerContainer.classList.add("shows-section__header-container");
 
-      dateHeader.innerText = "DATE";
-      dateInfo.innerText = shows[i].date;
-      venueHeader.innerText = "VENUE";
-      venueInfo.innerText = shows[i].venue;
-      locationHeader.innerText = "LOCATION";
-      locationInfo.innerText = shows[i].location;
-      buyButton.innerText = "BUY TICKETS";
+  dateHeaderTablet.classList.add("shows-section__label");
+  venueHeaderTablet.classList.add("shows-section__label");
+  locationHeaderTablet.classList.add("shows-section__label");
+  dateHeaderTablet.classList.add("shows-section__label--tablet");
+  venueHeaderTablet.classList.add("shows-section__label--tablet");
+  locationHeaderTablet.classList.add("shows-section__label--tablet");
 
-      showsCard.appendChild(dateHeader);
-      showsCard.appendChild(dateInfo);
-      showsCard.appendChild(venueHeader);
-      showsCard.appendChild(venueInfo);
-      showsCard.appendChild(locationHeader);
-      showsCard.appendChild(locationInfo);
-      showsCard.appendChild(buyButton);
-      showsCard.appendChild(divider);
+  dateHeaderTablet.innerText = "DATE";
+  venueHeaderTablet.innerText = "VENUE";
+  locationHeaderTablet.innerText = "LOCATION";
 
-      showsContainer.appendChild(showsCard);
-    }
+  for (i = 0; i < shows.length; i++) {
+    let showsCard = document.createElement("div");
+    let dateHeader = document.createElement("p");
+    let dateInfo = document.createElement("p");
+    let venueHeader = document.createElement("p");
+    let venueInfo = document.createElement("p");
+    let locationHeader = document.createElement("p");
+    let locationInfo = document.createElement("p");
+    let buyButton = document.createElement("button");
+    let divider = document.createElement("hr");
 
-    showsSection.appendChild(showsHeader);
-    showsSection.appendChild(showsContainer);
-    document.body.insertBefore(showsSection, footer);
+    showsCard.classList.add("shows-section__shows-card");
+    dateHeader.classList.add("shows-section__label");
+    dateInfo.classList.add("shows-section__date");
+    venueHeader.classList.add("shows-section__label");
+    venueInfo.classList.add("shows-section__venue");
+    locationHeader.classList.add("shows-section__label");
+    locationInfo.classList.add("shows-section__location");
+    buyButton.classList.add("shows-section__buy-button");
+    divider.classList.add("shows-section__divider");
+
+    dateHeader.innerText = "DATE";
+    dateInfo.innerText = shows[i].date;
+    venueHeader.innerText = "VENUE";
+    venueInfo.innerText = shows[i].venue;
+    locationHeader.innerText = "LOCATION";
+    locationInfo.innerText = shows[i].location;
+    buyButton.innerText = "BUY TICKETS";
+
+    showsCard.appendChild(dateHeader);
+    showsCard.appendChild(dateInfo);
+    showsCard.appendChild(venueHeader);
+    showsCard.appendChild(venueInfo);
+    showsCard.appendChild(locationHeader);
+    showsCard.appendChild(locationInfo);
+    showsCard.appendChild(buyButton);
+
+    showsContainer.appendChild(showsCard);
+    showsContainer.appendChild(divider);
   }
 
-  buildShowsContent(showsArray);
-});
+  headerContainer.appendChild(dateHeaderTablet);
+  headerContainer.appendChild(venueHeaderTablet);
+  headerContainer.appendChild(locationHeaderTablet);
+  showsContainer.prepend(headerContainer);
+
+  showsSection.appendChild(showsHeader);
+  showsSection.appendChild(showsContainer);
+  document.body.insertBefore(showsSection, footer);
+}
+
+/*                                          ===== Shows Page Requirements =====
+
+    - **(DONE)** You must embed a song of your choice from SoundCloud using an iframe 
+    - **(DONE)** You must create the list of concerts using JavaScript DOM manipulation / flexbox layout.
+        - **(DONE)** You must have an array in JavaScript with all of concerts data and render the concerts HTML dynamically 
+        using the array data. It’s up to your discretion to decide on properties you create to represent all of 
+        the individual concert data.
+        - **(DONE)** No template literals should be used. All dynamic HTML should be added to DOM via DOM Methods for 
+        individual elements. Avoid bulk assigning stringified HTML using innerHTML
+        - **(DONE)** Utilize your knowledge of JavaScript DOM Manipulation and built in functions to create all the content 
+        between the hero image and the footer, as well as create your own functions as necessary. There should 
+        be no need to have any shows content housed within your html file for this section.
+        - **(DONE)** The individual rows of the Shows table will have different styling applied depending on the state of 
+        the table row. Utilize your knowledge of both JavaScript and Sass to accomplish this.
+            - **(DONE)** The individual rows of the Shows table need to have a hover state applied to them when a cursor 
+            is hovering over the table row, as per style guide. This can be done by utilizing a pseudo class 
+            within your Sass.
+            - **(DONE)** Additionally, clicking on an individual row should make that row "selected" or "active", 
+            applying a modifier CSS class via JavaScript. Utilize your knowledge of both JavaScript and Sass 
+            to accomplish this.
+        - **(DONE)** Your styling will still be applied through your Sass files. Do not use the built in JavaScript DOM style method.
+*/

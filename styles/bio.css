@@ -1,16 +1,16 @@
 @font-face {
   font-family: "Avenir-Regular";
-  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
+  src: url("../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
   font-family: "Avenir-Bold";
-  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
+  src: url("../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
 }
 @font-face {
   font-family: "Avenir-Demi";
-  src: url("file:///C:/Users/brand/Desktop/Brainstation%20-%20Web%20Development%20Bootcamp/BandSite%20Project/brandon-ong-bandsite/assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype");
+  src: url("../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype");
 }
 * {
   margin: 0;
@@ -138,12 +138,14 @@ body {
     flex-wrap: wrap;
     align-items: center;
     padding: 0 32px;
+    padding-bottom: 32px;
     position: relative;
   }
 }
 @media (min-width: 1280px) {
   .foot-bar {
     padding: 0 112px;
+    padding-bottom: 40px;
   }
 }
 .foot-bar__title {
@@ -260,6 +262,11 @@ body {
     padding-bottom: 16px;
     line-height: 20px;
   }
+}
+
+#bio-option {
+  font-family: "Avenir-Demi";
+  border-bottom: 4px solid #fafafa;
 }
 
 .hero-section {
@@ -531,8 +538,8 @@ body {
   }
 }
 .comments-section__divider {
-  stroke-width: 1px;
   color: #e1e1e1;
+  border: 1px solid #e1e1e1;
 }
 .comments-section__header {
   font-size: 8rem;
@@ -648,6 +655,7 @@ body {
   padding-bottom: 12px;
 }
 .comments-section__input-field:focus {
+  outline: transparent;
   border: 1px solid #000000;
 }
 @media (min-width: 767px) {

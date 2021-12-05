@@ -3,9 +3,15 @@
 @use "./partials/mixins";
 @use "./partials/fonts";
 
+#shows-option {
+  font-family: variables.$font-demi;
+  border-bottom: 4px solid variables.$alt-bg-color;
+}
+
 .hero-section {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: flex-start;
   background-image: url("../assets/images/hero-shows.jpg");
   background-size: cover;
@@ -16,11 +22,15 @@
 
   @include mixins.tablet {
     height: 500px;
+
     padding-top: variables.$padding-eight;
   }
 
   @include mixins.desktop {
-    z-index: -1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 0;
     height: 675px;
     padding-top: variables.$padding-eight;
     background-position: top;
@@ -32,6 +42,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
+    top: 0px;
     @include mixins.desktop {
       z-index: -1;
     }
@@ -55,13 +66,22 @@
     }
 
     &-container {
-      width: 60%;
+      width: 230px;
       z-index: 0;
+
+      @include mixins.tablet {
+        width: 560px;
+      }
+
+      @include mixins.desktop {
+        width: 600px;
+      }
     }
   }
 
   &__subtitle {
     @include mixins.subHeader;
+    font-weight: 700;
     padding-left: variables.$padding-two;
     color: variables.$primary-text-color;
     z-index: 0;
@@ -78,35 +98,99 @@
 
   &__sound-cloud {
     z-index: 0;
+    height: 125px;
+    width: 100%;
     box-sizing: border-box;
     padding: 0 variables.$padding-two;
 
     @include mixins.tablet {
       padding: 0 variables.$padding-four;
+      height: 166px;
+      width: 65%;
     }
 
     @include mixins.desktop {
-      padding-left: variables.$padding-ten + variables.$padding-four;
+      padding-right: variables.$padding-ten + variables.$padding-four;
+      width: 50%;
+      position: relative;
+      top: 15px;
     }
   }
 }
 
 .shows-section {
   padding: 0 variables.$padding-two;
+  padding-bottom: variables.$padding-two;
+
+  @include mixins.tablet {
+    padding: 0 variables.$padding-four;
+    padding-bottom: variables.$padding-four;
+  }
+
+  @include mixins.desktop {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 variables.$padding-ten + variables.$padding-four;
+    padding-bottom: variables.$padding-five;
+  }
 
   &__header {
     @include mixins.pageHeader;
     padding-bottom: 0;
-  }
-
-  &__shows-card {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: variables.$padding-two 0;
 
     @include mixins.tablet {
-      flex-direction: row;
+      @include mixins.pageHeaderTablet;
+    }
+
+    &-container {
+      @include mixins.tablet {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        padding: 0 variables.$padding-increment;
+      }
+
+      @include mixins.desktop {
+        padding-left: variables.$padding-three;
+        padding-right: variables.$padding-three;
+      }
+    }
+  }
+
+  &__shows {
+    &-container {
+      @include mixins.tablet {
+        display: grid;
+      }
+
+      @include mixins.desktop {
+        padding-top: variables.$padding-six;
+        width: 75%;
+      }
+    }
+
+    &-card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: variables.$padding-two 0;
+
+      @include mixins.tablet {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        align-items: center;
+        padding-left: variables.$padding-increment;
+        padding-right: variables.$padding-increment;
+        box-sizing: border-box;
+      }
+
+      @include mixins.desktop {
+        padding-left: variables.$padding-three;
+        padding-right: variables.$padding-three;
+        &:hover {
+          background-color: variables.$alt-bg-color;
+          cursor: pointer;
+        }
+      }
     }
   }
 
@@ -119,12 +203,30 @@
       0
     );
     color: variables.$secondary-text-color;
+
+    @include mixins.tablet {
+      display: none;
+    }
+
+    &--tablet {
+      display: none;
+      @include mixins.tablet {
+        display: flex;
+        @include mixins.bodyTextTablet;
+        font-weight: 700;
+      }
+    }
   }
 
   &__date,
   &__venue,
   &__location {
     @include mixins.bodyText;
+
+    @include mixins.tablet {
+      // @include mixins.bodyTextTablet;
+      @include mixins.textFormat(16px, variables.$font-regular, 20lh, 0, 0);
+    }
   }
 
   &__date {
@@ -144,8 +246,31 @@
     color: variables.$primary-text-color;
     background-color: variables.$primary-bg-color;
     padding: 0 32px;
-    margin-bottom: variables.$padding-two;
+    // margin-bottom: variables.$padding-increment;
     border: none;
     border-radius: 4px;
+
+    &:active {
+      background-color: variables.$hover-state-bg-color;
+    }
+
+    @include mixins.tablet {
+      width: 150px;
+    }
+
+    @include mixins.desktop {
+      &:hover {
+        background-color: variables.$hover-state-bg-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__divider {
+    color: variables.$form-item-color;
+    border: 1px solid variables.$form-item-color;
+
+    @include mixins.tablet {
+    }
   }
 }

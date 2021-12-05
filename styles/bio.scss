@@ -3,6 +3,11 @@
 @use "./partials/mixins";
 @use "./partials/fonts";
 
+#bio-option {
+  font-family: variables.$font-demi;
+  border-bottom: 4px solid variables.$alt-bg-color;
+}
+
 .hero-section {
   display: flex;
   align-items: center;
@@ -191,8 +196,8 @@
   }
 
   &__divider {
-    stroke-width: 1px;
     color: variables.$form-item-color;
+    border: 1px solid variables.$form-item-color;
   }
 
   &__header {
@@ -291,6 +296,7 @@
       box-sizing: border-box;
 
       &:focus {
+        outline: transparent;
         border: 1px solid variables.$hover-state-bg-color;
       }
 
