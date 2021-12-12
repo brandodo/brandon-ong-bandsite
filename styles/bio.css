@@ -633,6 +633,36 @@ body {
     height: 20px;
   }
 }
+.comments-section__delete-message--warning {
+  color: red;
+  position: absolute;
+  right: 65px;
+  display: none;
+}
+.comments-section__delete-message--yes {
+  position: absolute;
+  right: 40px;
+  padding: 0 5px;
+  text-align: center;
+  display: none;
+}
+.comments-section__delete-message--yes:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+.comments-section__delete-message--no {
+  position: absolute;
+  right: 20px;
+  padding: 0 5px;
+  text-align: center;
+  display: none;
+}
+.comments-section__delete-message--no:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
 .comments-section__image-container {
   display: flex;
   justify-content: center;

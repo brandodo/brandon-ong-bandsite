@@ -279,14 +279,53 @@
     }
   }
 
-  &__delete-button {
-    position: absolute;
-    right: 0;
+  &__delete {
+    &-button {
+      position: absolute;
+      right: 0;
 
-    @include mixins.desktop {
-      &:hover {
-        cursor: pointer;
-        height: 20px;
+      @include mixins.desktop {
+        &:hover {
+          cursor: pointer;
+          height: 20px;
+        }
+      }
+    }
+
+    &-message {
+      &--warning {
+        color: red;
+        position: absolute;
+        right: 65px;
+        display: none;
+      }
+
+      &--yes {
+        position: absolute;
+        right: 40px;
+        padding: 0 5px;
+        text-align: center;
+        display: none;
+
+        &:hover {
+          cursor: pointer;
+          background-color: black;
+          color: white;
+        }
+      } 
+
+      &--no {
+        position: absolute;
+        right: 20px;
+        padding: 0 5px;
+        text-align: center;
+        display: none;
+
+        &:hover {
+          cursor: pointer;
+          background-color: black;
+          color: white;
+        }
       }
     }
   }

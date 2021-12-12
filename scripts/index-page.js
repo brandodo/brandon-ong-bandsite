@@ -135,7 +135,8 @@ function addDeleteFeature() {
 
 // remove comment from DOM and API
 function deleteComment(event) {
-  let deleteConfirm = confirm("Are you sure you want to delete this comment?");
+  // let deleteConfirm = confirm("Are you sure you want to delete this comment?");
+  let deleteConfirm = confirmDelete(event);
 
   if (deleteConfirm === true) {
     let parentId = event.target.parentNode.parentNode.id;
@@ -155,6 +156,37 @@ function deleteComment(event) {
   }
 }
 
+function confirmDelete(event) {
+  let parentId = event.target.parentNode.parentNode.id;
+  let confirmMessage = document.querySelector(
+    "#" + parentId + " .comments-section__delete-message--warning"
+  );
+  let optionYes = document.querySelector(
+    "#" + parentId + " .comments-section__delete-message--yes"
+  );
+  let optionNo = document.querySelector(
+    "#" + parentId + " .comments-section__delete-message--no"
+  );
+
+  confirmMessage.style.display = "inline";
+  optionYes.style.display = "inline";
+  optionNo.style.display = "inline";
+
+  optionYes.addEventListener("click", () => {
+    return true;
+  });
+
+  optionNo.addEventListener("click", () => {
+    return false;
+    optionNo.removeEventListener("click", () => {
+      return false;
+    });
+  });
+  confirmMessage.style.display = "none";
+  optionYes.style.display = "none";
+  optionNo.style.display = "none";
+}
+
 function displayComment(commentObject) {
   let parent = document.querySelector(".comments-section__comments-container");
   let commentContainer = document.createElement("article");
@@ -169,6 +201,9 @@ function displayComment(commentObject) {
   let likeCount = document.createElement("p");
   let likeButton = document.createElement("img");
   let deleteButton = document.createElement("img");
+  let message = document.createElement("p");
+  let yes = document.createElement("p");
+  let no = document.createElement("p");
   let newDivider = document.createElement("hr");
 
   commentContainer.classList.add("comments-section__comment-posted");
@@ -187,7 +222,15 @@ function displayComment(commentObject) {
   likeContainer.classList.add("comments-section__likes-container");
   likeCount.classList.add("comments-section__likes-counter");
   likeButton.classList.add("comments-section__likes-button");
+
   deleteButton.classList.add("comments-section__delete-button");
+  message.classList.add("comments-section__delete-message--warning");
+  yes.classList.add("comments-section__delete-message--yes");
+  no.classList.add("comments-section__delete-message--no");
+
+  message.innerText = "Are you sure?";
+  yes.innerText = "Y";
+  no.innerText = "N";
 
   newDivider.classList.add("comments-section__divider");
 
@@ -206,6 +249,9 @@ function displayComment(commentObject) {
   likeContainer.appendChild(likeCount);
   likeContainer.appendChild(likeButton);
   likeContainer.appendChild(deleteButton);
+  likeContainer.appendChild(message);
+  likeContainer.appendChild(yes);
+  likeContainer.appendChild(no);
 
   textContainer.appendChild(commentHeader);
   textContainer.appendChild(commentText);
