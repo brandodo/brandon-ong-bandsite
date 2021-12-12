@@ -1,49 +1,26 @@
-let showsArray = [
-  {
-    date: "Mon Sept 06 2021",
-    venue: "Ronald Lane",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Tue Sept 21 2021",
-    venue: "Pier 3 East",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Fri Oct 15 2021",
-    venue: "View Lounge",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Sat Nov 06 2021",
-    venue: "Hyatt Agency",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Fri Nov 26 2021",
-    venue: "Moscow Center",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Wed Dec 15 2021",
-    venue: "Press Club",
-    location: "San Francisco, CA",
-  },
-];
+let apiKey = "49b6fbf1-795c-49f9-977d-fbff7e90ed31";
 let showsRow;
 
-buildShowsContent(showsArray);
+// GET Show date info
+axios
+  .get("https://project-1-api.herokuapp.com/showdates?api_key=" + apiKey)
+  .then((response) => {
+    buildShowsContent(response.data);
 
-// modify click-state for shows row
-showsRow = document.querySelectorAll(".shows-section__shows-card");
-showsRow.forEach((x, i) => {
-  x.addEventListener("click", () => {
-    showsRow.forEach((x) => {
-      x.style.backgroundColor = "";
+    // modify click-state for shows row
+    showsRow = document.querySelectorAll(".shows-section__shows-card");
+    showsRow.forEach((x, i) => {
+      x.addEventListener("click", () => {
+        showsRow.forEach((x) => {
+          x.style.backgroundColor = "";
+        });
+        showsRow[i].style.backgroundColor = "#E1E1E1";
+      });
     });
-    showsRow[i].style.backgroundColor = "#E1E1E1";
+  })
+  .catch((error) => {
+    alert("Could not load show dates, error occurred:\n" + error);
   });
-});
 
 // declare function to build out Shows section
 function buildShowsContent(shows) {
@@ -95,9 +72,9 @@ function buildShowsContent(shows) {
     divider.classList.add("shows-section__divider");
 
     dateHeader.innerText = "DATE";
-    dateInfo.innerText = shows[i].date;
+    dateInfo.innerText = formatDate(shows[i].date);
     venueHeader.innerText = "VENUE";
-    venueInfo.innerText = shows[i].venue;
+    venueInfo.innerText = shows[i].place;
     locationHeader.innerText = "LOCATION";
     locationInfo.innerText = shows[i].location;
     buyButton.innerText = "BUY TICKETS";
@@ -124,6 +101,9 @@ function buildShowsContent(shows) {
   document.body.insertBefore(showsSection, footer);
 }
 
+function formatDate(timestamp) {
+  return new Date(Number(timestamp)).toDateString();
+}
 /*                                          ===== Shows Page Requirements =====
 
     - **(DONE)** You must embed a song of your choice from SoundCloud using an iframe 

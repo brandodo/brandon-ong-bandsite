@@ -604,6 +604,35 @@ body {
     padding-top: 16px;
   }
 }
+.comments-section__likes-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: relative;
+  padding-top: 10px;
+}
+.comments-section__likes-counter {
+  color: #afafaf;
+  font-size: 5rem;
+  font-weight: 600;
+  padding-right: 10px;
+}
+@media (min-width: 1280px) {
+  .comments-section__likes-button:hover {
+    cursor: pointer;
+    height: 20px;
+  }
+}
+.comments-section__delete-button {
+  position: absolute;
+  right: 0;
+}
+@media (min-width: 1280px) {
+  .comments-section__delete-button:hover {
+    cursor: pointer;
+    height: 20px;
+  }
+}
 .comments-section__image-container {
   display: flex;
   justify-content: center;

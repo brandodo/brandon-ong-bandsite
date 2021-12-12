@@ -1,40 +1,13 @@
 let nameField = document.querySelector("#user-name");
 let commentField = document.querySelector("#comment-box");
 let form = document.querySelector(".comments-section__comment-form");
+let apiKey = "49b6fbf1-795c-49f9-977d-fbff7e90ed31";
 
-let comments = [
-  {
-    username: "Miles Acosta",
-    timestamp: convertDate("12/20/2020"),
-    comment:
-      "I can't stop listening. Every time I hear one of their songs the vocals it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
-    hasImage: false,
-  },
-  {
-    username: "Emilie Beach",
-    timestamp: convertDate("01/09/2021"),
-    comment:
-      "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",
-    hasImage: false,
-  },
-  {
-    username: "Connor Walton",
-    timestamp: convertDate("02/17/2021"),
-    comment:
-      "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
-    hasImage: false,
-  },
-];
-
-// display initial comments
-for (i = 0; i < comments.length; i++) {
-  displayComment(comments[i]);
-}
+populateCommentsSection();
 
 // listen for field inputs, w/ validation
 nameField.addEventListener("input", (e) => {
   if (e.target.value == "") {
-    console.log("invalid entry!");
     e.target.style.border = "1px solid #D22D2D";
   } else {
     e.target.style.border = "";
@@ -43,54 +16,142 @@ nameField.addEventListener("input", (e) => {
 
 commentField.addEventListener("input", (e) => {
   if (e.target.value == "") {
-    console.log("invalid entry!");
     e.target.style.border = "1px solid #D22D2D";
   } else {
     e.target.style.border = "";
   }
 });
 
-// listen for form submission, run displayComment if conditions are met
+// listen for form submission, POST new comments to API and run displayComment
 form.addEventListener("submit", (e) => {
   e.preventDefault(); // prevent page from refreshing after submit
 
-  if (nameField.value !== "" && commentField.value !== "") {
+  if (!!nameField.value && !!commentField.value) {
     let nameCaptured = nameField.value;
     let commentCaptured = commentField.value;
-    const datePosted = new Date();
-    // const dateString =
-    //   datePosted.getMonth() +
-    //   1 +
-    //   "/" +
-    //   datePosted.getDate() +
-    //   "/" +
-    //   datePosted.getFullYear();
 
-    comments.push({
-      username: nameCaptured,
-      timestamp: convertDate(datePosted.toString()),
-      comment: commentCaptured,
-      hasImage: true,
-    });
+    // POST call to API
+    axios
+      .post("https://project-1-api.herokuapp.com/comments?api_key=" + apiKey, {
+        name: nameCaptured,
+        comment: commentCaptured,
+      })
+      .then((response) => {
+        displayComment(response.data);
+        addLikeFeature();
+        addDeleteFeature();
+      })
+      .catch((error) => {
+        alert("Error has occurred while trying to submit comment:\n" + error);
+      });
 
-    displayComment(comments[comments.length - 1]);
+    // reset form values
     form.reset();
+
+    // error check validation for blank fields.
   } else if (nameField.value === "" && commentField.value === "") {
     nameField.style.border = "1px solid #D22D2D";
-    // nameField.placeholder = "You forgot to provide a name!";
     commentField.style.border = "1px solid #D22D2D";
-    // commentField.placeholder = "You forgot to write a comment!"
     alert("Fields cannot be blank, please fill in missing information!");
-  } else if (nameField.value === "" && commentField.value !== "") {
+  } else if (nameField.value === "" && !!commentField.value) {
     nameField.style.border = "1px solid #D22D2D";
-    // nameField.placeholder = "You forgot to provide a name!";
     alert("Please enter your name!");
-  } else if (nameField.value !== "" && commentField.value === "") {
+  } else if (!!nameField.value && commentField.value === "") {
     commentField.style.border = "1px solid #D22D2D";
-    // commentField.placeholder = "You forgot to write a comment!"
     alert("Please write a comment!");
   }
 });
+
+// GET comments, then load comments to DOM
+function populateCommentsSection() {
+  axios
+    .get("https://project-1-api.herokuapp.com/comments?api_key=" + apiKey)
+    .then((response) => {
+      // sort comments ascending by timestamp
+      let comments = response.data.sort((a, b) => {
+        return a.timestamp - b.timestamp;
+      });
+
+      // load comments to DOM
+      for (i = 0; i < comments.length; i++) {
+        displayComment(comments[i]);
+      }
+
+      addLikeFeature();
+      addDeleteFeature();
+    })
+    .catch((error) => {
+      alert(
+        "The following error occurred while trying to load comments:\n" + error
+      );
+    });
+}
+
+// add event listener to like buttons
+function addLikeFeature() {
+  let likeButtons;
+  likeButtons = document.querySelectorAll(".comments-section__likes-button");
+  likeButtons.forEach((button) => {
+    button.removeEventListener("click", updateLikes);
+    button.addEventListener("click", updateLikes);
+  });
+}
+
+// update like count on DOM and API
+function updateLikes(event) {
+  let parentId = event.target.parentNode.parentNode.id;
+  let parentContainer = document.getElementById(parentId);
+  let likeCount =
+    parentContainer.childNodes[parentContainer.childNodes.length - 1]
+      .childNodes[0];
+
+  axios
+    .put(
+      "https://project-1-api.herokuapp.com/comments/" +
+        parentId +
+        "/like?api_key=" +
+        apiKey
+    )
+    .then((response) => {
+      let responseObj = response.data;
+      likeCount.innerText = responseObj.likes;
+    })
+    .catch((error) => {
+      alert("Could not like message, error:\n" + error);
+    });
+}
+
+// add event listener for delete buttons
+function addDeleteFeature() {
+  let deleteButtons;
+  deleteButtons = document.querySelectorAll(".comments-section__delete-button");
+  deleteButtons.forEach((button) => {
+    button.removeEventListener("click", deleteComment);
+    button.addEventListener("click", deleteComment);
+  });
+}
+
+// remove comment from DOM and API
+function deleteComment(event) {
+  let deleteConfirm = confirm("Are you sure you want to delete this comment?");
+
+  if (deleteConfirm === true) {
+    let parentId = event.target.parentNode.parentNode.id;
+    let parentContainer = document.getElementById(parentId);
+
+    axios
+      .delete(
+        "https://project-1-api.herokuapp.com/comments/" +
+          parentId +
+          "?api_key=" +
+          apiKey
+      )
+      .then((response) => {
+        parentContainer.parentNode.previousSibling.remove();
+        parentContainer.parentNode.remove();
+      });
+  }
+}
 
 function displayComment(commentObject) {
   let parent = document.querySelector(".comments-section__comments-container");
@@ -102,38 +163,51 @@ function displayComment(commentObject) {
   let nameText = document.createElement("p");
   let dateText = document.createElement("p");
   let commentText = document.createElement("p");
+  let likeContainer = document.createElement("div");
+  let likeCount = document.createElement("p");
+  let likeButton = document.createElement("img");
+  let deleteButton = document.createElement("img");
   let newDivider = document.createElement("hr");
 
   commentContainer.classList.add("comments-section__comment-posted");
   imageContainer.classList.add("comments-section__image-container");
   textContainer.classList.add("comments-section__user-comment-container");
+  textContainer.setAttribute("id", commentObject.id);
   commentHeader.classList.add("comments-section__user-info");
   nameText.classList.add("comments-section__user-name");
   dateText.classList.add("comments-section__user-date");
   commentText.classList.add("comments-section__user-comment");
 
-  if (commentObject.hasImage === false) {
-    imageDisplayed.classList.add("comments-section__user-image");
-    imageDisplayed.classList.add("comments-section__user-image--posted");
-    imageDisplayed.classList.add("comments-section__user-image--placeholder");
-  } else {
-    imageDisplayed.classList.add("comments-section__user-image");
-    imageDisplayed.classList.add("comments-section__user-image--posted");
-  }
+  imageDisplayed.classList.add("comments-section__user-image");
+  imageDisplayed.classList.add("comments-section__user-image--posted");
+  imageDisplayed.classList.add("comments-section__user-image--placeholder");
+
+  likeContainer.classList.add("comments-section__likes-container");
+  likeCount.classList.add("comments-section__likes-counter");
+  likeButton.classList.add("comments-section__likes-button");
+  deleteButton.classList.add("comments-section__delete-button");
 
   newDivider.classList.add("comments-section__divider");
 
-  nameText.innerText = commentObject.username;
-  dateText.innerText = commentObject.timestamp;
+  nameText.innerText = commentObject.name;
+  dateText.innerText = convertTimestamp(commentObject.timestamp);
   commentText.innerText = commentObject.comment;
+  likeCount.innerText = commentObject.likes;
+  likeButton.setAttribute("src", "./assets/icons/SVG/icon-like.svg");
+  deleteButton.setAttribute("src", "./assets/icons/SVG/icon-delete.svg");
 
   imageContainer.appendChild(imageDisplayed);
 
   commentHeader.appendChild(nameText);
   commentHeader.appendChild(dateText);
 
+  likeContainer.appendChild(likeCount);
+  likeContainer.appendChild(likeButton);
+  likeContainer.appendChild(deleteButton);
+
   textContainer.appendChild(commentHeader);
   textContainer.appendChild(commentText);
+  textContainer.appendChild(likeContainer);
 
   commentContainer.appendChild(imageContainer);
   commentContainer.appendChild(textContainer);
@@ -142,11 +216,9 @@ function displayComment(commentObject) {
   parent.prepend(newDivider);
 }
 
-function convertDate(date) {
-  let postedDate = new Date(date);
+function convertTimestamp(timestamp) {
   let currentDate = new Date();
-
-  let timeElapsed = currentDate.getTime() - postedDate.getTime();
+  let timeElapsed = currentDate.getTime() - timestamp;
   let yearsPassed = Math.round(timeElapsed / 1000 / 60 / 60 / 24 / 365);
   let monthsPassed = Math.round(timeElapsed / 1000 / 60 / 60 / 24 / 30);
   let daysPassed = Math.round(timeElapsed / 1000 / 60 / 60 / 24);
@@ -165,7 +237,7 @@ function convertDate(date) {
   } else if (hoursPassed === 0 && minutesPassed < 60 && minutesPassed > 0) {
     return minutesPassed + " minute(s) ago";
   } else if (minutesPassed === 0 && secondsPassed < 60) {
-    return secondsPassed+1 + " second(s) ago";
+    return secondsPassed + 1 + " second(s) ago";
   }
 }
 
@@ -191,4 +263,3 @@ function convertDate(date) {
             - **(DONE)** Re-renders to the page all comments from the comment array
             - **(DONE)** Clears the input fields after submitting a new comment
   */
-
