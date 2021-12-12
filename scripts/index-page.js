@@ -89,8 +89,9 @@ function populateCommentsSection() {
 
 // add event listener to like buttons
 function addLikeFeature() {
-  let likeButtons;
-  likeButtons = document.querySelectorAll(".comments-section__likes-button");
+  let likeButtons = document.querySelectorAll(
+    ".comments-section__likes-button"
+  );
   likeButtons.forEach((button) => {
     button.removeEventListener("click", updateLikes);
     button.addEventListener("click", updateLikes);
@@ -123,8 +124,9 @@ function updateLikes(event) {
 
 // add event listener for delete buttons
 function addDeleteFeature() {
-  let deleteButtons;
-  deleteButtons = document.querySelectorAll(".comments-section__delete-button");
+  let deleteButtons = document.querySelectorAll(
+    ".comments-section__delete-button"
+  );
   deleteButtons.forEach((button) => {
     button.removeEventListener("click", deleteComment);
     button.addEventListener("click", deleteComment);
