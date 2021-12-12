@@ -115,7 +115,7 @@ function updateLikes(event) {
     )
     .then((response) => {
       let responseObj = response.data;
-      likeCount.innerText = responseObj.likes;
+      likeCount.innerText = responseObj.likes + " Likes";
     })
     .catch((error) => {
       alert("Could not like message, error:\n" + error);
@@ -194,7 +194,7 @@ function displayComment(commentObject) {
   nameText.innerText = commentObject.name;
   dateText.innerText = convertTimestamp(commentObject.timestamp);
   commentText.innerText = commentObject.comment;
-  likeCount.innerText = commentObject.likes;
+  likeCount.innerText = commentObject.likes + " Likes";
   likeButton.setAttribute("src", "./assets/icons/SVG/icon-like.svg");
   deleteButton.setAttribute("src", "./assets/icons/SVG/icon-delete.svg");
 
