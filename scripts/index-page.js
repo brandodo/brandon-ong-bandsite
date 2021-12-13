@@ -128,63 +128,57 @@ function addDeleteFeature() {
     ".comments-section__delete-button"
   );
   deleteButtons.forEach((button) => {
-    button.removeEventListener("click", deleteComment);
-    button.addEventListener("click", deleteComment);
+    button.removeEventListener("click", confirmDelete);
+    button.addEventListener("click", confirmDelete);
   });
 }
 
-// remove comment from DOM and API
-function deleteComment(event) {
-  // let deleteConfirm = confirm("Are you sure you want to delete this comment?");
-  let deleteConfirm = confirmDelete(event);
-
-  if (deleteConfirm === true) {
-    let parentId = event.target.parentNode.parentNode.id;
-    let parentContainer = document.getElementById(parentId);
-
-    axios
-      .delete(
-        "https://project-1-api.herokuapp.com/comments/" +
-          parentId +
-          "?api_key=" +
-          apiKey
-      )
-      .then((response) => {
-        parentContainer.parentNode.previousSibling.remove();
-        parentContainer.parentNode.remove();
-      });
-  }
-}
-
+// delete comment after user confirms Yes
 function confirmDelete(event) {
   let parentId = event.target.parentNode.parentNode.id;
-  let confirmMessage = document.querySelector(
-    "#" + parentId + " .comments-section__delete-message--warning"
-  );
-  let optionYes = document.querySelector(
-    "#" + parentId + " .comments-section__delete-message--yes"
-  );
-  let optionNo = document.querySelector(
-    "#" + parentId + " .comments-section__delete-message--no"
-  );
+  let parentContainer = document.getElementById(parentId);
+  let confirmMessage =
+    parentContainer.childNodes[parentContainer.childNodes.length - 1]
+      .childNodes[3];
+  let optionYes =
+    parentContainer.childNodes[parentContainer.childNodes.length - 1]
+      .childNodes[4];
+  let optionNo =
+    parentContainer.childNodes[parentContainer.childNodes.length - 1]
+      .childNodes[5];
 
   confirmMessage.style.display = "inline";
   optionYes.style.display = "inline";
   optionNo.style.display = "inline";
 
-  optionYes.addEventListener("click", () => {
-    return true;
-  });
+  optionYes.addEventListener("click", deleteComment);
+  optionNo.addEventListener("click", removeNoListener);
 
-  optionNo.addEventListener("click", () => {
-    return false;
-    optionNo.removeEventListener("click", () => {
-      return false;
+  // remove event listener required a named function
+  function removeNoListener() {
+    confirmMessage.style.display = "none";
+    optionYes.style.display = "none";
+    optionNo.style.display = "none";
+    optionNo.removeEventListener("click", removeNoListener);
+  }
+}
+
+// remove comment from DOM and API
+function deleteComment(event) {
+  let parentId = event.target.parentNode.parentNode.id;
+  let parentContainer = document.getElementById(parentId);
+
+  axios
+    .delete(
+      "https://project-1-api.herokuapp.com/comments/" +
+        parentId +
+        "?api_key=" +
+        apiKey
+    )
+    .then((response) => {
+      parentContainer.parentNode.previousSibling.remove();
+      parentContainer.parentNode.remove();
     });
-  });
-  confirmMessage.style.display = "none";
-  optionYes.style.display = "none";
-  optionNo.style.display = "none";
 }
 
 function displayComment(commentObject) {
@@ -266,13 +260,14 @@ function displayComment(commentObject) {
 
 function convertTimestamp(timestamp) {
   let currentDate = new Date();
-  let timeElapsed = currentDate.getTime() - timestamp;
+  let timeElapsed = Math.abs(currentDate.getTime() - timestamp);
   let yearsPassed = Math.round(timeElapsed / 1000 / 60 / 60 / 24 / 365);
   let monthsPassed = Math.round(timeElapsed / 1000 / 60 / 60 / 24 / 30);
   let daysPassed = Math.round(timeElapsed / 1000 / 60 / 60 / 24);
   let hoursPassed = Math.round(timeElapsed / 1000 / 60 / 60);
   let minutesPassed = Math.round(timeElapsed / 1000 / 60);
   let secondsPassed = Math.round(timeElapsed / 1000);
+  console.log(secondsPassed);
 
   if (daysPassed > 30 && monthsPassed > 11) {
     return yearsPassed + " year(s) ago";
@@ -285,7 +280,7 @@ function convertTimestamp(timestamp) {
   } else if (hoursPassed === 0 && minutesPassed < 60 && minutesPassed > 0) {
     return minutesPassed + " minute(s) ago";
   } else if (minutesPassed === 0 && secondsPassed < 60) {
-    return secondsPassed + 1 + " second(s) ago";
+    return secondsPassed + " second(s) ago";
   }
 }
 

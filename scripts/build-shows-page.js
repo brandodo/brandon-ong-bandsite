@@ -1,26 +1,49 @@
 let apiKey = "49b6fbf1-795c-49f9-977d-fbff7e90ed31";
-let showsRow;
+
+getShowData();
+
+function formatDate(timestamp) {
+  return new Date(Number(timestamp)).toDateString();
+}
 
 // GET Show date info
-axios
-  .get("https://project-1-api.herokuapp.com/showdates?api_key=" + apiKey)
-  .then((response) => {
-    buildShowsContent(response.data);
-
-    // modify click-state for shows row
-    showsRow = document.querySelectorAll(".shows-section__shows-card");
-    showsRow.forEach((x, i) => {
-      x.addEventListener("click", () => {
-        showsRow.forEach((x) => {
-          x.style.backgroundColor = "";
-        });
-        showsRow[i].style.backgroundColor = "#E1E1E1";
-      });
+function getShowData() {
+  axios
+    .get("https://project-1-api.herokuapp.com/showdates?api_key=" + apiKey)
+    .then((response) => {
+      buildShowsContent(response.data);
+      addShowEffects();
+    })
+    .catch((error) => {
+      alert("Could not load show dates, error occurred:\n" + error);
     });
-  })
-  .catch((error) => {
-    alert("Could not load show dates, error occurred:\n" + error);
+}
+
+function addShowEffects() {
+  let showsRow = document.querySelectorAll(".shows-section__shows-card");
+
+  showsRow.forEach((x, i) => {
+    x.addEventListener("click", () => {
+      showsRow.forEach((x) => {
+        x.style.backgroundColor = "";
+      });
+      showsRow[i].style.backgroundColor = "#E1E1E1";
+    });
   });
+
+  document.body.addEventListener("click", (event) => {
+    if (
+      event.target.classList[0] !== "shows-section__shows-card" &&
+      event.target.parentNode.classList[0] !== "shows-section__shows-card"
+    ) {
+      showsRow.forEach((x) => {
+        if (x.style.backgroundColor !== "") {
+          x.style.backgroundColor = "";
+        }
+      });
+    }
+  });
+}
 
 // declare function to build out Shows section
 function buildShowsContent(shows) {
@@ -101,9 +124,6 @@ function buildShowsContent(shows) {
   document.body.insertBefore(showsSection, footer);
 }
 
-function formatDate(timestamp) {
-  return new Date(Number(timestamp)).toDateString();
-}
 /*                                          ===== Shows Page Requirements =====
 
     - **(DONE)** You must embed a song of your choice from SoundCloud using an iframe 
