@@ -67,7 +67,7 @@ function populateCommentsSection() {
   axios
     .get("https://project-1-api.herokuapp.com/comments?api_key=" + apiKey)
     .then((response) => {
-      // sort comments ascending by timestamp
+      // sort comments
       let comments = response.data.sort((a, b) => {
         return a.timestamp - b.timestamp;
       });
@@ -154,7 +154,7 @@ function confirmDelete(event) {
   optionYes.addEventListener("click", deleteComment);
   optionNo.addEventListener("click", removeNoListener);
 
-  // remove event listener required a named function
+  // removeEventListener required a named function
   function removeNoListener() {
     confirmMessage.style.display = "none";
     optionYes.style.display = "none";
@@ -178,6 +178,9 @@ function deleteComment(event) {
     .then((response) => {
       parentContainer.parentNode.previousSibling.remove();
       parentContainer.parentNode.remove();
+    })
+    .catch((error) => {
+      alert("Could not delete comment, error:\n" + error);
     });
 }
 
@@ -200,10 +203,11 @@ function displayComment(commentObject) {
   let no = document.createElement("p");
   let newDivider = document.createElement("hr");
 
+  textContainer.setAttribute("id", commentObject.id);
+
   commentContainer.classList.add("comments-section__comment-posted");
   imageContainer.classList.add("comments-section__image-container");
   textContainer.classList.add("comments-section__user-comment-container");
-  textContainer.setAttribute("id", commentObject.id);
   commentHeader.classList.add("comments-section__user-info");
   nameText.classList.add("comments-section__user-name");
   dateText.classList.add("comments-section__user-date");
