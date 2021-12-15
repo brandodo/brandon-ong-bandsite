@@ -399,7 +399,6 @@
 
     &-submit {
       @include mixins.textFormat(14px, variables.$font-regular, 20px, 0, 0);
-      // letter-spacing: 1px;
 
       height: 40px;
       color: variables.$primary-text-color;
@@ -443,7 +442,6 @@
       &--placeholder {
         background-image: none;
         background-color: variables.$form-item-color;
-        // margin: 0;
       }
 
       @include mixins.tablet {

@@ -283,26 +283,3 @@ function convertTimestamp(timestamp) {
     return secondsPassed + " second(s) ago";
   }
 }
-
-/*                              ===== COMMENTS SECTION REQUIREMENTS =====
-
-        - **(DONE)** You must have an array in JavaScript with 3 default comment objects to start. 
-        Comments must have a name, a timestamp, and the comment text.
-
-        - **(DONE)** You must have a function called displayComment() that takes in one 
-        comment object as a parameter and displays it on the page using JavaScrip
-        DOM manipulation.
-    
-        - **(DONE)** No template literals should be used. All dynamic HTML should be added to 
-        DOM via DOM Methods for individual elements. Avoid bulk assigning stringified 
-        HTML using innerHTML
-
-        - **(DONE)** You must use an HTML Form with the following functionality: 
-            - **(DONE)** That submits using the addEventListener
-            - **(DONE)** Prevents the page from reloading when submitting a new comment
-            - **(DONE)** Constructs a new comment object
-            - **(DONE)** Pushes a new comment object to an array of comments
-            - ??? Clears all comments from the page
-            - **(DONE)** Re-renders to the page all comments from the comment array
-            - **(DONE)** Clears the input fields after submitting a new comment
-  */
